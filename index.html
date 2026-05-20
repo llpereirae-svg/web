@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="es-EC">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <title>TributaSoft — Facturación electrónica para PYMES en Ecuador</title>
+  <meta name="description" content="Empieza a facturar electrónicamente en 2 minutos. 300 comprobantes gratis, sin tarjeta de crédito ni contratos. Autorizado por el SRI." />
+
+  <!-- Open Graph / redes -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_EC" />
+  <meta property="og:title" content="TributaSoft — Facturación electrónica para PYMES en Ecuador" />
+  <meta property="og:description" content="300 facturas electrónicas gratis. Conectado al SRI. Sin contratos." />
+  <meta property="og:image" content="assets/img/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg" />
+  <link rel="alternate icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="apple-touch-icon" href="assets/img/logo.png" />
+
+  <!-- Preload fuentes criticas (above the fold) -->
+  <link rel="preload" href="assets/fonts/DMSans-Bold.woff2"    as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/Inter-Regular.woff2"  as="font" type="font/woff2" crossorigin />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header" id="site-header">
+    <div class="container site-header__inner">
+      <a href="#top" class="brand" aria-label="TributaSoft — Inicio">
+        <img src="assets/img/logo.svg" alt="" class="brand__icon" width="32" height="32" />
+        <span class="brand__name">Tributa<span>Soft</span></span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a href="#facturacion">Facturación</a>
+        <a href="#urbanizaciones">Urbanizaciones</a>
+        <a href="#bpo">BPO Contable</a>
+        <a href="#testimonio">Clientes</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://tbc.tributasoft.ec/Erp-web/" class="btn btn--ghost" rel="noopener">Iniciar sesión</a>
+        <a href="#ruc-form" class="btn btn--primary">Empezar gratis</a>
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-drawer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="4" y1="7"  x2="20" y2="7"/>
+            <line x1="4" y1="12" x2="20" y2="12"/>
+            <line x1="4" y1="17" x2="20" y2="17"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" data-open="false" aria-hidden="true">
+    <div class="mobile-drawer__panel" role="dialog" aria-modal="true" aria-label="Menú móvil">
+      <button type="button" class="mobile-drawer__close" id="drawer-close" aria-label="Cerrar menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18"/>
+          <line x1="6" y1="18" x2="18" y2="6"/>
+        </svg>
+      </button>
+      <a href="#facturacion">Facturación electrónica</a>
+      <a href="#urbanizaciones">Urbanizaciones</a>
+      <a href="#bpo">BPO Contable</a>
+      <a href="#testimonio">Clientes</a>
+      <a href="#contacto">Contacto</a>
+      <a href="https://tbc.tributasoft.ec/Erp-web/" class="btn btn--secondary btn--block" rel="noopener" style="margin-top: auto;">Iniciar sesión</a>
+      <a href="#ruc-form" class="btn btn--primary btn--block">Empezar gratis</a>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero section" id="facturacion">
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__copy reveal">
+            <span class="hero__notice">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9 12 2"/>
+              </svg>
+              Nuevo cliente · 300 facturas gratis
+            </span>
+            <h1 class="hero__title">
+              Empieza a facturar electrónicamente en <em>2 minutos</em>
+            </h1>
+            <p class="hero__subtitle">
+              300 comprobantes electrónicos gratis para que pruebes la plataforma.
+              Sin tarjeta de crédito. Sin contratos.
+            </p>
+            <div class="hero__trust" aria-label="Garantías">
+              <span class="hero__trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+                Autorizado por el SRI
+              </span>
+              <span class="hero__trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="11" width="18" height="11" rx="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                Datos encriptados
+              </span>
+              <span class="hero__trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                Soporte 24/7
+              </span>
+            </div>
+          </div>
+
+          <!-- Formulario captura de RUC -->
+          <aside class="ruc-card reveal" id="ruc-form" aria-labelledby="ruc-title">
+            <span class="ruc-card__decor" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </span>
+            <p class="ruc-card__title" id="ruc-title">Ingresa tu RUC para empezar</p>
+            <form id="ruc-form-el" novalidate>
+              <label for="ruc-input" class="visually-hidden">Número de RUC</label>
+              <input
+                type="text"
+                id="ruc-input"
+                name="ruc"
+                class="input"
+                placeholder="0992703601001"
+                inputmode="numeric"
+                pattern="[0-9]{13}"
+                maxlength="13"
+                autocomplete="off"
+                required
+              />
+              <p class="input-help" id="ruc-help">Debe tener 13 dígitos y terminar en 001, 002, etc.</p>
+              <button type="submit" class="btn btn--primary btn--block" style="margin-top: var(--ts-space-4);">
+                Continuar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </button>
+              <p class="text-soft" style="font-size: var(--ts-text-xs); text-align: center; margin-top: var(--ts-space-4);">
+                Tus datos están seguros con nosotros
+              </p>
+            </form>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider container" />
+
+    <!-- ============================================================
+         3 PASOS — Facturar nunca fue tan facil
+         ============================================================ -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header reveal">
+          <span class="eyebrow">¿Cómo funciona?</span>
+          <h2 style="margin-top: var(--ts-space-3);">Facturar nunca fue tan fácil</h2>
+          <p>Configura tu cuenta en 3 simples pasos.</p>
+        </header>
+
+        <div class="steps">
+          <article class="step reveal" data-stagger="1">
+            <span class="step__num">1</span>
+            <h3>Ingresa tu RUC</h3>
+            <p>Nos conectamos con el SRI para obtener tu información básica automáticamente.</p>
+          </article>
+          <article class="step reveal" data-stagger="2">
+            <span class="step__num">2</span>
+            <h3>Sube tu firma electrónica</h3>
+            <p>Compatible con todos los proveedores autorizados del Ecuador. Solo necesitas tu archivo <code>.p12</code>.</p>
+          </article>
+          <article class="step reveal" data-stagger="3">
+            <span class="step__num">3</span>
+            <h3>Empieza a facturar</h3>
+            <p>Crea facturas, notas de crédito, retenciones y guías de remisión al instante.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider container" />
+
+    <!-- ============================================================
+         VERTICAL: URBANIZACIONES
+         ============================================================ -->
+    <section class="section" id="urbanizaciones">
+      <div class="container">
+        <div class="vertical">
+          <div class="reveal">
+            <span class="eyebrow">Urbanizaciones y condominios</span>
+            <h2 style="margin-top: var(--ts-space-3);">Gestiona tu urbanización sin papeleo</h2>
+            <p class="text-muted">
+              Alícuotas, cobros y reportes de tu condominio en un solo lugar.
+              Cero hojas de cálculo, cero llamadas para confirmar pagos.
+            </p>
+            <ul class="vertical__list">
+              <li>Cobro automático de alícuotas mensuales</li>
+              <li>Reportes de morosidad en tiempo real</li>
+              <li>Estados de cuenta individualizados por propietario</li>
+              <li>Comunicación integrada con propietarios y administración</li>
+            </ul>
+            <a href="#contacto" class="btn btn--secondary">Conocer más</a>
+          </div>
+          <div class="vertical__visual vertical__visual--teal reveal" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18"/>
+              <path d="M5 21V7l8-4v18"/>
+              <path d="M19 21V11l-6-4"/>
+              <path d="M9 9v.01"/>
+              <path d="M9 12v.01"/>
+              <path d="M9 15v.01"/>
+              <path d="M9 18v.01"/>
+              <path d="M15 13v.01"/>
+              <path d="M15 16v.01"/>
+              <path d="M15 19v.01"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider container" />
+
+    <!-- ============================================================
+         VERTICAL: BPO CONTABLE
+         ============================================================ -->
+    <section class="section" id="bpo">
+      <div class="container">
+        <div class="vertical vertical--flip">
+          <div class="vertical__visual vertical__visual--navy reveal" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="reveal">
+            <span class="eyebrow">BPO Contable &amp; Administrativo</span>
+            <h2 style="margin-top: var(--ts-space-3);">Externaliza tu back-office contable con expertos</h2>
+            <p class="text-muted">
+              Procesamos nómina, ATS, viáticos y pagos automáticos para empresas con
+              gran volumen de información. Más de 15 años de experiencia con clientes
+              de talla mundial. Cuesta menos que un departamento interno y reduce el
+              riesgo operacional.
+            </p>
+            <ul class="vertical__list">
+              <li>Procesamiento de nómina mensual y rol de pagos</li>
+              <li>Generación y envío del Anexo Transaccional (ATS) al SRI</li>
+              <li>Control y reembolso de viáticos</li>
+              <li>Pagos automáticos a proveedores y conciliación bancaria</li>
+            </ul>
+            <a href="#contacto" class="btn btn--secondary">Solicitar propuesta</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider container" />
+
+    <!-- ============================================================
+         TESTIMONIO
+         ============================================================ -->
+    <section class="testimonial-section" id="testimonio">
+      <div class="container">
+        <article class="testimonial reveal">
+          <div class="testimonial__stars" aria-label="5 de 5 estrellas">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9 12 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9 12 2"/></svg>
+          </div>
+          <blockquote class="testimonial__quote">
+            "TributaSoft cambió la forma en que manejo mi negocio. Es rápido, intuitivo y
+            el soporte siempre está ahí cuando tengo dudas sobre el SRI."
+          </blockquote>
+          <footer class="testimonial__author">
+            <span class="testimonial__avatar" aria-hidden="true">AS</span>
+            <div>
+              <div class="testimonial__author-name">Andrea Salazar</div>
+              <div class="testimonial__author-role">Consultora Independiente</div>
+            </div>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <hr class="divider container" />
+
+    <!-- ============================================================
+         CTA FINAL
+         ============================================================ -->
+    <section class="cta-final" id="contacto">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Empieza hoy</span>
+          <h2 style="margin-top: var(--ts-space-3);">Comienza a facturar hoy. Sin tarjeta de crédito.</h2>
+          <p class="text-muted">
+            Las primeras 300 facturas electrónicas son gratis. No necesitas instalar nada —
+            funciona en computador, tablet o teléfono.
+          </p>
+          <div class="cta-final__actions">
+            <a href="#ruc-form" class="btn btn--primary btn--lg">Empezar gratis</a>
+            <a href="https://wa.me/{PENDIENTE-WHATSAPP}?text=Hola%20TributaSoft%2C%20me%20interesa%20saber%20m%C3%A1s." class="btn btn--secondary btn--lg" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2c-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.5s1 2.8 1.2 3c.1.2 2 3.1 4.8 4.3 1.5.7 2.2.8 3 .7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+              </svg>
+              Hablar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a href="#top" class="brand" style="margin-bottom: var(--ts-space-4);">
+            <img src="assets/img/logo.svg" alt="" class="brand__icon" width="32" height="32" />
+            <span class="brand__name">Tributa<span>Soft</span></span>
+          </a>
+          <p class="text-soft" style="max-width: 32ch; margin-top: var(--ts-space-4);">
+            Plataforma de facturación electrónica y servicios contables para PYMES en Ecuador.
+          </p>
+        </div>
+
+        <div>
+          <h4>Producto</h4>
+          <ul>
+            <li><a href="#facturacion">Facturación electrónica</a></li>
+            <li><a href="#urbanizaciones">Urbanizaciones</a></li>
+            <li><a href="#bpo">BPO Contable</a></li>
+            <li><a href="https://tbc.tributasoft.ec/Erp-web/" rel="noopener">Acceder al portal</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="tel:{PENDIENTE-TELEFONO}">{PENDIENTE-TELEFONO}</a></li>
+            <li><a href="mailto:{PENDIENTE-EMAIL}">{PENDIENTE-EMAIL}</a></li>
+            <li><a href="mailto:{PENDIENTE-EMAIL-SOPORTE}">Soporte: {PENDIENTE-EMAIL-SOPORTE}</a></li>
+            <li class="text-soft">{PENDIENTE-DIRECCION}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Términos de servicio</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Política de cookies</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© <span id="footer-year">2026</span> TributaSoft S.A. — Todos los derechos reservados · Ecuador</p>
+        <ul class="social-list" aria-label="Redes sociales">
+          <li>
+            <a href="https://www.facebook.com/tributasoft2" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/tributasoft" target="_blank" rel="noopener" aria-label="Twitter / X">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/tributasoft" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58 0 4.85.07 1.17.05 1.8.25 2.23.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.37 1.06.42 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.06.37-2.23.42-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.42-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.42-.37-1.06-.42-2.23C2.16 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85c.05-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.06-.37 2.23-.42C8.42 2.16 8.8 2.16 12 2.16zM12 0C8.74 0 8.33 0 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s0 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.32.8.74 1.48 1.38 2.13.65.64 1.33 1.06 2.13 1.38.76.3 1.64.5 2.91.56C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.07-1.28.07-1.69.07-4.95s0-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67 0 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@tributasoftsa" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a class="fab-whatsapp" href="https://wa.me/{PENDIENTE-WHATSAPP}?text=Hola%20TributaSoft" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2c-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.5s1 2.8 1.2 3c.1.2 2 3.1 4.8 4.3 1.5.7 2.2.8 3 .7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+    </svg>
+  </a>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
