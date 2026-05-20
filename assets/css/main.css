@@ -375,35 +375,67 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   100% { transform: scale(1.06) rotate(8deg);  }
 }
 
-/* Clients strip — tipografico (sin imagenes) */
-.clients-strip {
-  margin-top: var(--ts-space-20);
-  padding-top: var(--ts-space-10);
-  border-top: 1px solid var(--ts-border);
+/* ============================================================
+   ICONS — sistema minimalista de iconos inline (stroke 1.5)
+   ============================================================ */
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
 }
-.clients-strip__label {
-  margin-bottom: var(--ts-space-6);
+/* Icono dentro de un titulo (junto a chapter__title h3) */
+.icon--title {
+  width: 2rem;
+  height: 2rem;
+  color: var(--ts-orange);
+  margin-right: var(--ts-space-4);
+  transform: translateY(-0.1em);
 }
-.clients-strip__list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--ts-space-6) var(--ts-space-10);
+@media (max-width: 640px) {
+  .icon--title { width: 1.5rem; height: 1.5rem; margin-right: var(--ts-space-3); }
+}
+/* Icono grande arriba de un bloque editorial (urbanizaciones, BPO, maps) */
+.icon--block {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--ts-orange);
+  margin-bottom: var(--ts-space-5);
+  display: block;
+}
+/* Icono inline en listas / texto corrido */
+.icon--inline {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--ts-orange);
+  margin-right: var(--ts-space-3);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   PIONEER BADGE — eyebrow destacado con icono de estrella
+   ============================================================ */
+.pioneer-badge {
+  display: inline-flex;
   align-items: center;
+  gap: var(--ts-space-2);
+  padding: var(--ts-space-2) var(--ts-space-4);
+  margin-bottom: var(--ts-space-8);
+  background: var(--ts-orange-highlight);
+  border: 1px solid rgba(253, 118, 26, 0.25);
+  border-radius: var(--ts-radius-full);
+  font-family: var(--ts-font-body);
+  font-size: var(--ts-text-xs);
+  font-weight: 600;
+  letter-spacing: var(--ts-tracking-wider);
+  text-transform: uppercase;
+  color: var(--ts-orange-deep);
 }
-@media (min-width: 640px)  { .clients-strip__list { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1024px) { .clients-strip__list { grid-template-columns: repeat(5, 1fr); } }
-.clients-strip__item {
-  font-family: var(--ts-font-display);
-  font-size: var(--ts-text-h4);
-  font-weight: 500;
-  letter-spacing: var(--ts-tracking-snug);
-  color: var(--ts-text-soft);
-  text-align: center;
-  white-space: nowrap;
-  opacity: 0.7;
-  transition: opacity var(--ts-duration) var(--ts-ease), color var(--ts-duration) var(--ts-ease);
+.pioneer-badge .icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--ts-orange);
+  fill: var(--ts-orange);
 }
-.clients-strip__item:hover { opacity: 1; color: var(--ts-ink); }
 
 /* ============================================================
    STATS BLOCK — numerales tabular gigantes
@@ -503,6 +535,68 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   color: var(--ts-text-muted);
   margin-bottom: var(--ts-space-6);
 }
+
+/* ============================================================
+   MAPS BLOCK — Visítanos con embed de Google Maps
+   ============================================================ */
+.maps-block {
+  display: grid;
+  gap: var(--ts-space-12);
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+@media (min-width: 900px) {
+  .maps-block {
+    grid-template-columns: 1fr 1.15fr;
+    gap: var(--ts-space-16);
+    align-items: center;
+  }
+}
+.maps-block__copy { max-width: 540px; }
+.maps-block__list {
+  list-style: none;
+  padding: 0;
+  margin: var(--ts-space-6) 0 var(--ts-space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ts-space-3);
+}
+.maps-block__list li {
+  display: flex;
+  align-items: center;
+  font-size: var(--ts-text-md);
+  color: var(--ts-text-muted);
+  line-height: var(--ts-leading-normal);
+}
+.maps-block__list a {
+  color: var(--ts-text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--ts-duration) var(--ts-ease);
+}
+.maps-block__list a:hover { border-bottom-color: var(--ts-orange); }
+.maps-block__embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 320px;
+  border-radius: var(--ts-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--ts-shadow-md);
+  border: 1px solid var(--ts-border);
+  background: var(--ts-surface-2);
+}
+.maps-block__embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  filter: grayscale(0.15) contrast(1.02);
+  transition: filter var(--ts-duration) var(--ts-ease);
+}
+.maps-block__embed:hover iframe { filter: grayscale(0) contrast(1); }
 
 /* ============================================================
    PULL QUOTE — reemplaza testimonio
