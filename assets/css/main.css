@@ -222,10 +222,14 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   color: #c9dee9;                              /* Color oficial "Tributa" del wordmark */
   white-space: nowrap;
 }
-/* Mobile: wordmark mas chico para que respire en el header */
-@media (max-width: 640px) {
-  .brand__icon { width: 1.875rem; height: 1.875rem; }
-  .brand__name { font-size: 1.375rem; }       /* 22px */
+/* Mobile: wordmark mucho mas chico para que entre con los iconos del header */
+@media (max-width: 899px) {
+  .brand__icon { width: 1.625rem; height: 1.625rem; }
+  .brand__name { font-size: 1.125rem; }       /* 18px */
+}
+@media (max-width: 380px) {
+  .brand__icon { width: 1.5rem; height: 1.5rem; }
+  .brand__name { font-size: 1rem; }           /* 16px */
 }
 .brand__name span {
   font-family: var(--ts-font-brand-soft);     /* Lobster */
@@ -253,11 +257,33 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
 .site-nav a:hover { color: var(--ts-ink); }
 @media (min-width: 900px) { .site-nav { display: inline-flex; } }
 
-.header-actions { display: inline-flex; align-items: center; gap: var(--ts-space-3); }
-/* En mobile/tablet ocultamos los botones del header: ya estan en el drawer hamburguesa.
-   Solo dejamos visible el menu-toggle para no atorar el header. */
+.header-actions { display: inline-flex; align-items: center; gap: var(--ts-space-2); }
+
+/* === Botones icon-only en mobile (Iniciar sesion + Empezar gratis) === */
+.btn--icon-mobile { display: inline-flex; align-items: center; gap: var(--ts-space-2); }
+.btn--icon-mobile svg { width: 1.125rem; height: 1.125rem; flex-shrink: 0; }
+.btn--icon-mobile .btn__label { display: inline; }
+
 @media (max-width: 899px) {
-  .header-actions .btn { display: none; }
+  /* Modo compacto: solo icono, sin texto visible (texto sigue accesible por aria-label) */
+  .btn--icon-mobile {
+    padding: 0.55rem;
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    justify-content: center;
+    border-radius: var(--ts-radius);
+  }
+  .btn--icon-mobile .btn__label {
+    /* Visually hidden pero presente para SR */
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .btn--icon-mobile svg { width: 1.1rem; height: 1.1rem; }
 }
 
 .menu-toggle {
@@ -1189,6 +1215,155 @@ body.flow-modal-open { overflow: hidden; }
     opacity: 1;
     transform: none;
   }
+}
+
+/* ============================================================
+   BROCHURE PAGES — urbanizaciones / facturacion (subpaginas)
+   ============================================================ */
+.brochure-hero {
+  padding-top: var(--ts-space-16);
+  padding-bottom: var(--ts-space-12);
+}
+@media (min-width: 768px) {
+  .brochure-hero {
+    padding-top: var(--ts-space-24);
+    padding-bottom: var(--ts-space-20);
+  }
+}
+.brochure-hero__title {
+  font-family: var(--ts-font-display);
+  font-size: var(--ts-text-display);
+  font-weight: 500;
+  line-height: var(--ts-leading-tight);
+  letter-spacing: var(--ts-tracking-tight);
+  color: var(--ts-ink);
+  margin-top: var(--ts-space-5);
+  margin-bottom: var(--ts-space-6);
+  text-wrap: balance;
+}
+@media (min-width: 768px) {
+  .brochure-hero__title { font-size: var(--ts-text-h1); }
+}
+.brochure-hero__title .italic { color: var(--ts-orange); }
+.brochure-hero__lead {
+  font-size: var(--ts-text-lg);
+  line-height: var(--ts-leading-relaxed);
+  color: var(--ts-text-muted);
+  margin-bottom: var(--ts-space-8);
+  max-width: 56ch;
+}
+.brochure-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ts-space-5);
+  flex-wrap: wrap;
+}
+
+/* Steps de brochure — vertical pipeline con número grande */
+.brochure-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.brochure-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--ts-space-5);
+  padding-block: var(--ts-space-10);
+  border-top: 1px solid var(--ts-border);
+}
+.brochure-step:last-child { border-bottom: 1px solid var(--ts-border); }
+@media (min-width: 768px) {
+  .brochure-step {
+    grid-template-columns: 5rem 1fr;
+    gap: var(--ts-space-10);
+    padding-block: var(--ts-space-12);
+  }
+}
+.brochure-step__num {
+  font-family: var(--ts-font-display);
+  font-weight: 500;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--ts-orange);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--ts-tracking-tight);
+}
+@media (min-width: 768px) {
+  .brochure-step__num { font-size: 3.5rem; }
+}
+.brochure-step__body { max-width: 56ch; }
+.brochure-step__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--ts-orange);
+  margin-bottom: var(--ts-space-4);
+}
+@media (min-width: 768px) {
+  .brochure-step__icon { width: 2.25rem; height: 2.25rem; }
+}
+.brochure-step__title {
+  font-family: var(--ts-font-display);
+  font-size: var(--ts-text-h3);
+  font-weight: 500;
+  letter-spacing: var(--ts-tracking-tight);
+  line-height: var(--ts-leading-snug);
+  color: var(--ts-ink);
+  margin-bottom: var(--ts-space-3);
+}
+@media (min-width: 768px) {
+  .brochure-step__title { font-size: var(--ts-text-h2); }
+}
+.brochure-step__lead {
+  font-size: var(--ts-text-md);
+  line-height: var(--ts-leading-relaxed);
+  color: var(--ts-text-muted);
+  margin-bottom: var(--ts-space-3);
+}
+.brochure-step__note {
+  font-size: var(--ts-text-sm);
+  line-height: var(--ts-leading-normal);
+  color: var(--ts-text-soft);
+  padding-left: var(--ts-space-4);
+  border-left: 2px solid var(--ts-orange);
+  margin-top: var(--ts-space-3);
+}
+
+/* Beneficios — grid 1/2/3 col */
+.brochure-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ts-space-8);
+}
+@media (min-width: 640px)  { .brochure-benefits { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px)  { .brochure-benefits { grid-template-columns: repeat(3, 1fr); gap: var(--ts-space-10); } }
+
+.brochure-benefit {
+  padding-top: var(--ts-space-6);
+  border-top: 1px solid var(--ts-border);
+}
+.brochure-benefit__icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--ts-orange);
+  margin-bottom: var(--ts-space-4);
+}
+.brochure-benefit h3 {
+  font-family: var(--ts-font-display);
+  font-size: var(--ts-text-h4);
+  font-weight: 500;
+  letter-spacing: var(--ts-tracking-tight);
+  color: var(--ts-ink);
+  margin-bottom: var(--ts-space-3);
+}
+.brochure-benefit p {
+  font-size: var(--ts-text-md);
+  line-height: var(--ts-leading-relaxed);
+  color: var(--ts-text-muted);
+  margin: 0;
 }
 
 /* ============================================================
