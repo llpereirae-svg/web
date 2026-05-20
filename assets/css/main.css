@@ -218,7 +218,7 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   font-weight: 400;
   font-size: 1.75rem;                          /* 28px */
   letter-spacing: 0.01em;
-  color: var(--ts-navy);                       /* Coincide con el wordmark del logo */
+  color: #c9dee9;                              /* Color oficial "Tributa" del wordmark */
   white-space: nowrap;
 }
 .brand__name span {
