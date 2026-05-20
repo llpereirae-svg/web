@@ -71,6 +71,59 @@
   drawer?.addEventListener('click', (e) => { if (e.target === drawer) closeDrawer(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
 
+  /* ---------- Flow modals (generico, data-open-modal / data-close-modal) ---------- */
+  let lastFocused = null;
+
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    lastFocused = document.activeElement;
+    modal.setAttribute('data-open', 'true');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('flow-modal-open');
+    // Reset animaciones reactivando data-open (forzar reflow)
+    const panel = modal.querySelector('.flow-modal__panel');
+    if (panel) {
+      panel.style.animation = 'none';
+      // eslint-disable-next-line no-unused-expressions
+      panel.offsetHeight;
+      panel.style.animation = '';
+    }
+    // Focus al primer elemento interactivo
+    const focusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    setTimeout(() => focusable?.focus(), 80);
+  }
+
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.setAttribute('data-open', 'false');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('flow-modal-open');
+    lastFocused?.focus?.();
+  }
+
+  $$('[data-open-modal]').forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(trigger.getAttribute('data-open-modal'));
+    });
+  });
+
+  $$('.flow-modal').forEach((modal) => {
+    modal.querySelectorAll('[data-close-modal]').forEach((closer) => {
+      closer.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeModal(modal);
+      });
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const openOne = document.querySelector('.flow-modal[data-open="true"]');
+    if (openOne) closeModal(openOne);
+  });
+
   /* ---------- Reveal on scroll (IntersectionObserver) ---------- */
   const reveals = $$('.reveal');
   if (reveals.length && 'IntersectionObserver' in window) {

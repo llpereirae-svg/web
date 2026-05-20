@@ -921,6 +921,259 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
 .tabular { font-variant-numeric: tabular-nums; }
 
 /* ============================================================
+   FLOW MODAL — modal con flujo animado (Urbanizaciones)
+   ============================================================ */
+.flow-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ts-z-modal);
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: var(--ts-space-4);
+}
+.flow-modal[data-open="true"] { display: flex; }
+
+.flow-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  animation: ts-fade-in 250ms var(--ts-ease) forwards;
+}
+
+.flow-modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  margin: var(--ts-space-8) auto;
+  background: var(--ts-bg);
+  border-radius: var(--ts-radius-lg);
+  padding: var(--ts-space-10) var(--ts-space-8);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  animation: ts-modal-in 350ms var(--ts-ease) 80ms forwards;
+}
+@media (min-width: 768px) {
+  .flow-modal__panel { padding: var(--ts-space-16) var(--ts-space-12); }
+}
+
+@keyframes ts-fade-in {
+  to { opacity: 1; }
+}
+@keyframes ts-modal-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.flow-modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--ts-space-6);
+  margin-bottom: var(--ts-space-12);
+  padding-bottom: var(--ts-space-8);
+  border-bottom: 1px solid var(--ts-border);
+}
+.flow-modal__title {
+  font-family: var(--ts-font-display);
+  font-size: var(--ts-text-h1);
+  font-weight: 500;
+  letter-spacing: var(--ts-tracking-tight);
+  line-height: var(--ts-leading-tight);
+  color: var(--ts-ink);
+  margin-top: var(--ts-space-4);
+  margin-bottom: var(--ts-space-4);
+}
+@media (max-width: 640px) {
+  .flow-modal__title { font-size: var(--ts-text-h2); }
+}
+.flow-modal__lead {
+  font-size: var(--ts-text-md);
+  color: var(--ts-text-muted);
+  line-height: var(--ts-leading-relaxed);
+  max-width: 50ch;
+  margin: 0;
+}
+.flow-modal__close {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--ts-border);
+  border-radius: var(--ts-radius-full);
+  background: transparent;
+  color: var(--ts-text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--ts-duration) var(--ts-ease),
+              transform var(--ts-duration) var(--ts-ease);
+}
+.flow-modal__close:hover {
+  background: var(--ts-text);
+  color: var(--ts-bg);
+  transform: rotate(90deg);
+}
+.flow-modal__close svg { width: 1.125rem; height: 1.125rem; }
+
+/* Flow steps — pipeline vertical con línea conectora animada */
+.flow-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+/* Línea vertical conectora animada (desktop+mobile, lado izquierdo) */
+.flow-steps::before {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.4rem;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--ts-orange) 8%, var(--ts-orange) 92%, transparent);
+  opacity: 0;
+  transform-origin: top;
+  transform: scaleY(0);
+  animation: ts-line-grow 1200ms var(--ts-ease) 400ms forwards;
+}
+@media (min-width: 768px) {
+  .flow-steps::before { left: 1.75rem; }
+}
+@keyframes ts-line-grow {
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+.flow-step {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: var(--ts-space-5);
+  align-items: flex-start;
+  padding: var(--ts-space-5) 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: ts-step-in 500ms var(--ts-ease) forwards;
+}
+@media (min-width: 768px) {
+  .flow-step { grid-template-columns: 3.5rem 1fr; gap: var(--ts-space-8); padding: var(--ts-space-6) 0; }
+}
+
+/* Stagger de cada paso */
+.flow-step[data-step="1"] { animation-delay: 300ms; }
+.flow-step[data-step="2"] { animation-delay: 450ms; }
+.flow-step[data-step="3"] { animation-delay: 600ms; }
+.flow-step[data-step="4"] { animation-delay: 750ms; }
+.flow-step[data-step="5"] { animation-delay: 900ms; }
+.flow-step[data-step="6"] { animation-delay: 1050ms; }
+.flow-step[data-step="7"] { animation-delay: 1200ms; }
+
+@keyframes ts-step-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.flow-step__node {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--ts-radius-full);
+  background: var(--ts-bg);
+  border: 2px solid var(--ts-orange);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: transform var(--ts-duration) var(--ts-ease),
+              box-shadow var(--ts-duration) var(--ts-ease);
+}
+@media (min-width: 768px) {
+  .flow-step__node { width: 3.5rem; height: 3.5rem; }
+}
+.flow-step:hover .flow-step__node {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 6px rgba(253, 118, 26, 0.12);
+}
+
+.flow-step__num {
+  position: absolute;
+  top: -0.6rem;
+  right: -0.6rem;
+  font-family: var(--ts-font-display);
+  font-size: var(--ts-text-xs);
+  font-weight: 600;
+  letter-spacing: var(--ts-tracking-wide);
+  color: var(--ts-orange);
+  background: var(--ts-bg);
+  padding: 0.1rem 0.35rem;
+  border: 1px solid var(--ts-orange);
+  border-radius: var(--ts-radius-full);
+  font-variant-numeric: tabular-nums;
+}
+
+.flow-step__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--ts-orange);
+}
+@media (min-width: 768px) {
+  .flow-step__icon { width: 1.75rem; height: 1.75rem; }
+}
+
+.flow-step__body { padding-top: var(--ts-space-2); }
+.flow-step__title {
+  font-family: var(--ts-font-display);
+  font-size: var(--ts-text-h4);
+  font-weight: 500;
+  letter-spacing: var(--ts-tracking-tight);
+  line-height: var(--ts-leading-snug);
+  color: var(--ts-ink);
+  margin-bottom: var(--ts-space-2);
+}
+@media (min-width: 768px) {
+  .flow-step__title { font-size: var(--ts-text-h3); }
+}
+.flow-step__lead {
+  font-size: var(--ts-text-sm);
+  color: var(--ts-text-muted);
+  line-height: var(--ts-leading-relaxed);
+  margin: 0;
+  max-width: 56ch;
+}
+@media (min-width: 768px) {
+  .flow-step__lead { font-size: var(--ts-text-md); }
+}
+
+.flow-modal__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ts-space-4);
+  margin-top: var(--ts-space-12);
+  padding-top: var(--ts-space-8);
+  border-top: 1px solid var(--ts-border);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Bloquea scroll del body cuando el modal está abierto */
+body.flow-modal-open { overflow: hidden; }
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .flow-modal__backdrop,
+  .flow-modal__panel,
+  .flow-step,
+  .flow-steps::before {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================
    LEGAL PAGES — terminos / privacidad / cookies
    ============================================================ */
 .legal-article {
