@@ -90,11 +90,12 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   width: 100%;
   max-width: var(--ts-container-max);
   margin-inline: auto;
-  padding-inline: var(--ts-container-pad-xs);
+  padding-inline: 1.25rem;                    /* 20px mobile base */
 }
 .container--narrow {
   max-width: var(--ts-container-narrow);
 }
+@media (min-width: 480px)  { .container { padding-inline: 1.5rem; } }   /* 24px */
 @media (min-width: 640px)  { .container { padding-inline: var(--ts-container-pad-sm); } }
 @media (min-width: 1024px) { .container { padding-inline: var(--ts-container-pad-md); } }
 
@@ -216,10 +217,15 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   align-items: baseline;
   font-family: var(--ts-font-brand-tributa);  /* Avenida */
   font-weight: 400;
-  font-size: 1.75rem;                          /* 28px */
+  font-size: 1.75rem;                          /* 28px desktop */
   letter-spacing: 0.01em;
   color: #c9dee9;                              /* Color oficial "Tributa" del wordmark */
   white-space: nowrap;
+}
+/* Mobile: wordmark mas chico para que respire en el header */
+@media (max-width: 640px) {
+  .brand__icon { width: 1.875rem; height: 1.875rem; }
+  .brand__name { font-size: 1.375rem; }       /* 22px */
 }
 .brand__name span {
   font-family: var(--ts-font-brand-soft);     /* Lobster */
@@ -248,6 +254,11 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
 @media (min-width: 900px) { .site-nav { display: inline-flex; } }
 
 .header-actions { display: inline-flex; align-items: center; gap: var(--ts-space-3); }
+/* En mobile/tablet ocultamos los botones del header: ya estan en el drawer hamburguesa.
+   Solo dejamos visible el menu-toggle para no atorar el header. */
+@media (max-width: 899px) {
+  .header-actions .btn { display: none; }
+}
 
 .menu-toggle {
   display: inline-flex;
@@ -369,6 +380,10 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   animation: hero-pulse 12s ease-in-out infinite alternate;
   margin: 0 auto;
   max-width: 480px;
+}
+/* En mobile se oculta: ocupa espacio sin aportar al copy. */
+@media (max-width: 1023px) {
+  .hero-editorial__visual { display: none; }
 }
 @keyframes hero-pulse {
   0%   { transform: scale(1)    rotate(0deg);  }
@@ -949,14 +964,17 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   position: relative;
   width: 100%;
   max-width: 880px;
-  margin: var(--ts-space-8) auto;
+  margin: var(--ts-space-6) auto;
   background: var(--ts-bg);
   border-radius: var(--ts-radius-lg);
-  padding: var(--ts-space-10) var(--ts-space-8);
+  padding: var(--ts-space-8) var(--ts-space-5);    /* mobile: mas aire en vertical, menos lateral */
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
   opacity: 0;
   transform: translateY(24px) scale(0.98);
   animation: ts-modal-in 350ms var(--ts-ease) 80ms forwards;
+}
+@media (min-width: 480px) {
+  .flow-modal__panel { padding: var(--ts-space-10) var(--ts-space-6); }
 }
 @media (min-width: 768px) {
   .flow-modal__panel { padding: var(--ts-space-16) var(--ts-space-12); }
