@@ -1,25 +1,37 @@
 /* ============================================================
-   TributaSoft — Design Tokens
-   Basado en tributasoft_core/DESIGN.md (paleta navy + naranja).
-   Todas las medidas siguen una escala 8px / mod tipografico modular.
+   TributaSoft — Design Tokens (v2 Editorial)
+   Modelo: Editorial Magazine (Linear/Stripe premium).
+   Tipografia display: Fraunces (serif moderna).
+   Body: Inter.
    ============================================================ */
 
-/* ---------- @font-face (auto-host, no Google Fonts CDN) ---------- */
+/* ---------- @font-face (auto-host) ---------- */
 @font-face {
-  font-family: 'DM Sans';
-  src: url('../fonts/DMSans-Regular.woff2') format('woff2');
+  font-family: 'Fraunces';
+  src: url('../fonts/Fraunces-Regular.woff2') format('woff2');
   font-weight: 400; font-style: normal; font-display: swap;
 }
 @font-face {
-  font-family: 'DM Sans';
-  src: url('../fonts/DMSans-SemiBold.woff2') format('woff2');
+  font-family: 'Fraunces';
+  src: url('../fonts/Fraunces-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../fonts/Fraunces-SemiBold.woff2') format('woff2');
   font-weight: 600; font-style: normal; font-display: swap;
 }
 @font-face {
-  font-family: 'DM Sans';
-  src: url('../fonts/DMSans-Bold.woff2') format('woff2');
+  font-family: 'Fraunces';
+  src: url('../fonts/Fraunces-Bold.woff2') format('woff2');
   font-weight: 700; font-style: normal; font-display: swap;
 }
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../fonts/Fraunces-Italic.woff2') format('woff2');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+/* Inter para body */
 @font-face {
   font-family: 'Inter';
   src: url('../fonts/Inter-Regular.woff2') format('woff2');
@@ -40,130 +52,160 @@
   src: url('../fonts/Inter-Bold.woff2') format('woff2');
   font-weight: 700; font-style: normal; font-display: swap;
 }
+/* DM Sans queda disponible para casos puntuales (boton mono-look),
+   pero deja de ser el display por defecto. */
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../fonts/DMSans-SemiBold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
 
 /* ---------- Tokens ---------- */
 :root {
-  /* === Brand palette === */
-  --ts-navy:           #1e3a8a;  /* Primary container — headlines, links */
-  --ts-navy-deep:      #00236f;  /* Primary deep — hover, emphasis */
-  --ts-navy-soft:      #dce1ff;  /* Primary fixed — backgrounds suaves */
-  --ts-navy-tint:      rgba(30, 58, 138, 0.08); /* sombras y tints */
+  /* === Brand palette (mantiene navy + naranja + teal) === */
+  --ts-navy:           #1e3a8a;
+  --ts-navy-deep:      #00236f;
+  --ts-navy-soft:      #dce1ff;
+  --ts-navy-tint:      rgba(30, 58, 138, 0.08);
 
-  --ts-orange:         #fd761a;  /* Secondary — CTA primario */
-  --ts-orange-deep:    #9d4300;  /* Secondary deep — hover de naranja */
-  --ts-orange-soft:    #ffdbca;  /* Naranja muy claro — banner aviso */
+  --ts-orange:         #fd761a;
+  --ts-orange-deep:    #9d4300;
+  --ts-orange-soft:    #ffe2cf;          /* mas suave que antes, tipo papel */
+  --ts-orange-highlight: rgba(253, 118, 26, 0.18); /* fondo para highlight de palabras */
 
-  --ts-teal:           #3cddc7;  /* Tertiary — accents, iconos */
-  --ts-teal-deep:      #005047;  /* Teal oscuro — texto sobre teal claro */
-  --ts-teal-soft:      #62fae3;  /* Teal muy claro — chips success */
+  --ts-teal:           #3cddc7;
+  --ts-teal-deep:      #005047;
+  --ts-teal-soft:      #c8f5ee;
 
-  /* === Surfaces === */
-  --ts-bg:             #f9f9f9;  /* Off-white global */
-  --ts-surface:        #ffffff;  /* Cards, formularios */
-  --ts-surface-2:      #f3f3f3;  /* Surfaces secundarios */
-  --ts-surface-3:      #eeeeee;  /* Surfaces terciarios (hover) */
+  /* === Surfaces editoriales (calidos, no clinicos) === */
+  --ts-bg:             #faf8f3;          /* off-white calido tipo papel */
+  --ts-bg-darker:      #f1ede4;          /* fondo seccion (separador editorial) */
+  --ts-surface:        #ffffff;
+  --ts-surface-2:      #f4f1ea;
+  --ts-ink:            #1a1a1a;          /* tinta editorial */
 
   /* === Text === */
-  --ts-text:           #1a1c1c;  /* Texto principal */
-  --ts-text-muted:     #444651;  /* Texto secundario */
-  --ts-text-soft:      #757682;  /* Texto sutil, captions */
-  --ts-text-on-orange: #ffffff;  /* Texto sobre botón naranja */
-  --ts-text-on-navy:   #ffffff;  /* Texto sobre fondo navy */
+  --ts-text:           #1a1a1a;
+  --ts-text-muted:     #4a4a4a;
+  --ts-text-soft:      #7a7a7a;
+  --ts-text-on-orange: #ffffff;
+  --ts-text-on-navy:   #ffffff;
 
   /* === Borders === */
-  --ts-border:         #e2e8f0;  /* Borde por defecto */
-  --ts-border-soft:    #f3f3f3;  /* Divisores muy sutiles */
+  --ts-border:         #e6e1d5;          /* tinted con calido */
+  --ts-border-soft:    #efeae0;
   --ts-border-focus:   var(--ts-navy);
 
   /* === Feedback === */
   --ts-success:        #34d399;
-  --ts-success-soft:   #d1fae5;
   --ts-error:          #ba1a1a;
-  --ts-error-soft:     #ffdad6;
 
   /* === Typography === */
-  --ts-font-display: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ts-font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --ts-font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ts-font-mono:    ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, monospace;
 
-  /* Escala (desktop) */
-  --ts-text-display: 3rem;       /* 48px — hero headline */
-  --ts-text-h1:      2.5rem;     /* 40px */
-  --ts-text-h2:      2rem;       /* 32px */
-  --ts-text-h3:      1.5rem;     /* 24px */
+  /* Escala editorial (mas grande que antes) */
+  --ts-text-mega:    7.5rem;     /* 120px — stats gigantes */
+  --ts-text-hero:    5rem;       /* 80px — hero headline desktop */
+  --ts-text-display: 4rem;       /* 64px — H1 / pull quote */
+  --ts-text-h1:      3rem;       /* 48px */
+  --ts-text-h2:      2.25rem;    /* 36px */
+  --ts-text-h3:      1.625rem;   /* 26px */
   --ts-text-h4:      1.25rem;    /* 20px */
-  --ts-text-lg:      1.125rem;   /* 18px — body lg */
-  --ts-text-md:      1rem;       /* 16px — body */
-  --ts-text-sm:      0.875rem;   /* 14px — labels */
-  --ts-text-xs:      0.75rem;    /* 12px — captions */
+  --ts-text-lg:      1.1875rem;  /* 19px — body lg editorial */
+  --ts-text-md:      1.0625rem;  /* 17px — body editorial */
+  --ts-text-sm:      0.9375rem;  /* 15px */
+  --ts-text-xs:      0.8125rem;  /* 13px */
 
-  --ts-leading-tight:   1.15;
-  --ts-leading-snug:    1.3;
-  --ts-leading-normal:  1.5;
-  --ts-leading-relaxed: 1.75;
+  --ts-leading-tight:   1.05;    /* mas tight para headlines serif */
+  --ts-leading-snug:    1.2;
+  --ts-leading-normal:  1.55;
+  --ts-leading-relaxed: 1.7;
 
-  --ts-tracking-tight: -0.02em;
-  --ts-tracking-snug:  -0.01em;
-  --ts-tracking-normal: 0;
-  --ts-tracking-wide:  0.02em;
-  --ts-tracking-wider: 0.05em;
+  --ts-tracking-tightest: -0.04em;
+  --ts-tracking-tight:    -0.02em;
+  --ts-tracking-snug:     -0.01em;
+  --ts-tracking-normal:   0;
+  --ts-tracking-wide:     0.04em;
+  --ts-tracking-wider:    0.12em;
 
-  /* === Spacing (8px base) === */
-  --ts-space-1:  0.25rem;   /* 4px */
-  --ts-space-2:  0.5rem;    /* 8px */
-  --ts-space-3:  0.75rem;   /* 12px */
-  --ts-space-4:  1rem;      /* 16px */
-  --ts-space-5:  1.25rem;   /* 20px */
-  --ts-space-6:  1.5rem;    /* 24px */
-  --ts-space-8:  2rem;      /* 32px */
-  --ts-space-10: 2.5rem;    /* 40px */
-  --ts-space-12: 3rem;      /* 48px */
-  --ts-space-16: 4rem;      /* 64px */
-  --ts-space-20: 5rem;      /* 80px */
-  --ts-space-24: 6rem;      /* 96px */
+  /* === Spacing (8px base, mas generoso para editorial) === */
+  --ts-space-1:  0.25rem;
+  --ts-space-2:  0.5rem;
+  --ts-space-3:  0.75rem;
+  --ts-space-4:  1rem;
+  --ts-space-5:  1.25rem;
+  --ts-space-6:  1.5rem;
+  --ts-space-8:  2rem;
+  --ts-space-10: 2.5rem;
+  --ts-space-12: 3rem;
+  --ts-space-16: 4rem;
+  --ts-space-20: 5rem;
+  --ts-space-24: 6rem;
+  --ts-space-32: 8rem;
+  --ts-space-40: 10rem;          /* secciones editoriales generosas */
+  --ts-space-48: 12rem;
 
-  /* === Container === */
-  --ts-container-max:    1280px;
-  --ts-container-pad-md: 2.5rem; /* 40px — desktop */
-  --ts-container-pad-sm: 1.5rem; /* 24px — tablet */
-  --ts-container-pad-xs: 1rem;   /* 16px — mobile */
+  /* === Container editorial === */
+  --ts-container-max:    1180px; /* mas estrecho que antes (mejor lectura) */
+  --ts-container-narrow: 760px;  /* para texto editorial 1 columna */
+  --ts-container-pad-md: 2.5rem;
+  --ts-container-pad-sm: 1.5rem;
+  --ts-container-pad-xs: 1.25rem;
 
-  /* === Radius === */
+  /* === Radius (mas sobrio para editorial) === */
   --ts-radius-sm:    0.25rem;
   --ts-radius:       0.5rem;
-  --ts-radius-md:    0.75rem;  /* 12px — botones, inputs */
-  --ts-radius-lg:    1rem;     /* 16px — inputs grandes */
-  --ts-radius-xl:    1.5rem;   /* 24px — cards */
+  --ts-radius-md:    0.625rem;   /* 10px botones */
+  --ts-radius-lg:    0.875rem;
+  --ts-radius-xl:    1.25rem;
   --ts-radius-full:  9999px;
 
-  /* === Shadows (tinted navy, suaves) === */
-  --ts-shadow-xs:  0 1px 2px var(--ts-navy-tint);
-  --ts-shadow-sm:  0 2px 8px var(--ts-navy-tint);
-  --ts-shadow:     0 4px 20px rgba(30, 58, 138, 0.06);
-  --ts-shadow-md:  0 12px 32px rgba(30, 58, 138, 0.08);
-  --ts-shadow-lg:  0 20px 48px rgba(30, 58, 138, 0.12);
+  /* === Shadows mas sobrios === */
+  --ts-shadow-xs:  0 1px 2px rgba(26, 26, 26, 0.04);
+  --ts-shadow-sm:  0 2px 8px rgba(26, 26, 26, 0.05);
+  --ts-shadow:     0 4px 20px rgba(26, 26, 26, 0.06);
+  --ts-shadow-md:  0 12px 32px rgba(26, 26, 26, 0.08);
 
   /* === Transitions === */
   --ts-ease:           cubic-bezier(0.4, 0, 0.2, 1);
   --ts-ease-out:       cubic-bezier(0, 0, 0.2, 1);
   --ts-duration-fast:  150ms;
   --ts-duration:       250ms;
-  --ts-duration-slow:  400ms;
+  --ts-duration-slow:  500ms;
 
   /* === Z-index === */
   --ts-z-header: 50;
   --ts-z-overlay: 90;
   --ts-z-modal:  100;
-  --ts-z-toast:  200;
 }
 
-/* Mobile typography scaling (DESIGN.md: headlines reduce significantly) */
-@media (max-width: 768px) {
+/* Tablet scaling */
+@media (max-width: 1024px) {
   :root {
-    --ts-text-display: 2.25rem;  /* 36px */
-    --ts-text-h1:      1.875rem; /* 30px */
-    --ts-text-h2:      1.5rem;   /* 24px */
-    --ts-text-h3:      1.25rem;  /* 20px */
-    --ts-text-h4:      1.125rem; /* 18px */
+    --ts-text-mega:    5.5rem;     /* 88px */
+    --ts-text-hero:    3.75rem;    /* 60px */
+    --ts-text-display: 3rem;       /* 48px */
+    --ts-text-h1:      2.5rem;
+    --ts-text-h2:      1.875rem;
+    --ts-space-40:     6rem;
+    --ts-space-48:     8rem;
+  }
+}
+
+/* Mobile scaling */
+@media (max-width: 640px) {
+  :root {
+    --ts-text-mega:    3.75rem;    /* 60px */
+    --ts-text-hero:    2.625rem;   /* 42px */
+    --ts-text-display: 2.25rem;    /* 36px */
+    --ts-text-h1:      1.875rem;
+    --ts-text-h2:      1.5rem;
+    --ts-text-h3:      1.375rem;
+    --ts-space-32:     4rem;
+    --ts-space-40:     5rem;
+    --ts-space-48:     6rem;
   }
 }
 
