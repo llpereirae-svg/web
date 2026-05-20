@@ -19,11 +19,10 @@
   <link rel="alternate icon" type="image/png" href="assets/img/logo.png" />
   <link rel="apple-touch-icon" href="assets/img/logo.png" />
 
-  <link rel="preload" href="assets/fonts/Avenida.otf"             as="font" type="font/otf"   crossorigin />
-  <link rel="preload" href="assets/fonts/Lobster-Regular.woff2"   as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/Fraunces-Medium.woff2"   as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/Fraunces-Italic.woff2"   as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/Inter-Regular.woff2"     as="font" type="font/woff2" crossorigin />
+  <!-- Las fuentes se cargan via @font-face en tokens.css (font-display:swap).
+       Quitamos rel="preload" porque python http.server no envia CORS headers
+       y el browser bloquea fuentes con crossorigin sin CORS. -->
+
 
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/main.css" />
