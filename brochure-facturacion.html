@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#1a1a1a" />
   <title>Brochure · Facturación electrónica — TributaSoft</title>
-  <meta name="description" content="De RUC a primera factura en 5 minutos. Sin scraping al SRI, sin formularios largos." />
+  <meta name="description" content="De RUC a primera factura en 5 minutos. Sin formularios largos, sin trámites manuales." />
 
   <link rel="icon" type="image/png" href="assets/img/logo.png" />
   <link rel="apple-touch-icon" href="assets/img/logo.png" />
@@ -61,13 +61,20 @@
           De RUC a primera factura,<br/>en <em class="italic">5 minutos</em>.
         </h1>
         <p class="brochure-hero__lead">
-          Cinco pasos para tener tu cuenta activa y emitir tu primera factura
-          electrónica autorizada por el SRI. Sin formularios largos, sin scraping,
-          sin pegar nada a mano.
+          Cinco pasos para crear tu cuenta y emitir tu primera factura electrónica
+          autorizada por el SRI. Sin formularios largos. Sin escribir datos a mano.
         </p>
         <div class="brochure-hero__actions">
+          <a href="brochure-facturacion.html?print=1" onclick="event.preventDefault(); window.print();" class="btn btn--ghost btn--lg">
+            Descargar PDF
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </a>
           <a href="https://llpereirae-svg.github.io/Ts/" class="btn btn--primary btn--lg" rel="noopener">
-            Empezar gratis
+            Empezar aquí
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"/>
               <polyline points="12 5 19 12 12 19"/>
@@ -107,13 +114,14 @@
               </svg>
               <h3 class="brochure-step__title">Identidad</h3>
               <p class="brochure-step__lead">
-                Subes tu firma electrónica (<code>.p12</code>) y el certificado de RUC
-                en PDF. Extraemos automáticamente razón social, dirección, régimen y
-                tipo de contribuyente — todo desde el cert oficial del SRI.
+                Subes tu firma electrónica y el certificado de RUC en PDF.
+                El sistema lee automáticamente razón social, dirección, régimen
+                y tipo de contribuyente — directamente del certificado oficial
+                del SRI.
               </p>
               <p class="brochure-step__note">
-                <strong>Privacidad:</strong> los archivos se procesan en tu navegador.
-                No los subimos a ningún servidor.
+                <strong>Tus archivos quedan en tu computadora.</strong>
+                Nunca los enviamos a ningún servidor.
               </p>
             </div>
           </li>
@@ -131,9 +139,10 @@
               </svg>
               <h3 class="brochure-step__title">Tus datos</h3>
               <p class="brochure-step__lead">
-                Revisas los campos auto-completados desde el cert (razón social,
-                provincia, ciudad). Confirmas o editas: dirección, email y celular.
-                Si no tienes nombre comercial, marcas "No aplica" y listo.
+                Revisas los campos que el sistema completó por ti
+                (razón social, provincia, ciudad). Confirmas o cambias:
+                dirección, correo y celular. Si no tienes nombre comercial,
+                marcas "No aplica" y listo.
               </p>
             </div>
           </li>
@@ -146,13 +155,14 @@
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                 <circle cx="12" cy="16.5" r="1.5"/>
               </svg>
-              <h3 class="brochure-step__title">Verificación SMS + email</h3>
+              <h3 class="brochure-step__title">Verificación por SMS y correo</h3>
               <p class="brochure-step__lead">
-                Recibes dos códigos de 4 dígitos: uno por SMS, otro por correo. Los
-                ingresas y listo — sin apps externas, sin scanear códigos QR.
+                Recibes dos códigos de 4 dígitos: uno por mensaje de texto y
+                otro por correo electrónico. Los escribes y listo. No necesitas
+                instalar nada extra ni escanear códigos.
               </p>
               <p class="brochure-step__note">
-                <strong>2FA al toque:</strong> validación en menos de un minuto.
+                <strong>Verificación rápida:</strong> menos de un minuto.
               </p>
             </div>
           </li>
@@ -164,11 +174,12 @@
                 <circle cx="12" cy="12" r="3"/>
                 <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.36.16.65.41.85.74L21 9a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
               </svg>
-              <h3 class="brochure-step__title">Configuración tributaria y facturación</h3>
+              <h3 class="brochure-step__title">Datos tributarios y de facturación</h3>
               <p class="brochure-step__lead">
-                Confirmas régimen (General / RIMPE), tipo de contribuyente y, si aplica,
-                tu número de resolución. Eliges si empezás de cero o continuás con tu
-                secuencia previa de facturación.
+                Confirmas tu régimen (General o RIMPE), el tipo de contribuyente
+                y, si lo necesitas, tu número de resolución. También eliges si
+                comienzas desde cero o continúas con la numeración que ya tenías
+                en otra plataforma.
               </p>
             </div>
           </li>
@@ -179,14 +190,16 @@
               <svg class="brochure-step__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
-              <h3 class="brochure-step__title">Clave + logo + listo</h3>
+              <h3 class="brochure-step__title">Clave, logo y listo</h3>
               <p class="brochure-step__lead">
-                Creas tu clave (con medidor de fuerza), subes tu logo (o lo generamos
-                con tu nombre comercial) y revisas un resumen antes de confirmar. Te
-                llega un correo con tus credenciales y ya estás listo para emitir.
+                Creas tu clave (te indicamos qué tan segura es), subes tu logo
+                (o lo creamos con tu nombre comercial) y revisas un resumen final.
+                Recibirás un correo con tus datos de acceso y ya puedes comenzar
+                a emitir facturas.
               </p>
               <p class="brochure-step__note">
-                <strong>Cortesía:</strong> tus primeros 300 comprobantes son gratis.
+                <strong>Regalo de bienvenida:</strong> tus primeros 300 comprobantes
+                son gratis.
               </p>
             </div>
           </li>
@@ -198,9 +211,9 @@
     <section class="section">
       <div class="container container--narrow">
         <header style="margin-bottom: var(--ts-space-12);">
-          <span class="eyebrow eyebrow-line">Qué hace diferente al onboarding</span>
+          <span class="eyebrow eyebrow-line">Por qué nuestro registro es distinto</span>
           <h2 style="margin-top: var(--ts-space-4);">
-            Sin <em class="italic">scraping</em> al SRI.<br/>Sin filas, sin papeleo.
+            Sin filas en el SRI.<br/>Sin <em class="italic">papeleo</em>.
           </h2>
         </header>
 
@@ -210,16 +223,16 @@
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
               <polyline points="9 12 11 14 15 10"/>
             </svg>
-            <h3>Tus archivos no salen del navegador</h3>
-            <p>La firma <code>.p12</code> y el cert PDF se procesan en tu equipo. No los subimos.</p>
+            <h3>Tus archivos no se suben a internet</h3>
+            <p>Tu firma electrónica y el certificado de RUC se leen en tu computadora. Nunca salen de ahí.</p>
           </li>
           <li class="brochure-benefit">
             <svg class="brochure-benefit__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="10"/>
               <polyline points="12 6 12 12 16 14"/>
             </svg>
-            <h3>5 minutos de onboarding</h3>
-            <p>Del primer click a tu primera factura emitida, sin trabajo manual entre medio.</p>
+            <h3>Registro en 5 minutos</h3>
+            <p>Del primer clic a tu primera factura emitida. Sin pasos manuales en el medio.</p>
           </li>
           <li class="brochure-benefit">
             <svg class="brochure-benefit__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

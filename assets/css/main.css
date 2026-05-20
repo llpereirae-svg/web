@@ -53,8 +53,14 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   border-radius: 0.15em;
 }
 
-/* Italic editorial (Fraunces italic es excelente) */
-.italic { font-style: italic; }
+/* Italic editorial — Fraunces italic SOLO existe en weight 400.
+   Forzamos font-weight:400 para evitar que el browser sintetice
+   italic 500/600/700 (que se ve distorsionado/falso). */
+.italic {
+  font-style: italic;
+  font-weight: 400 !important;
+  font-synthesis: none;
+}
 
 /* Eyebrow uppercase con tracking ancho — sello editorial */
 .eyebrow {
@@ -1608,8 +1614,79 @@ body.flow-modal-open { overflow: hidden; }
    PRINT
    ============================================================ */
 @media print {
-  .site-header, .fab-whatsapp, .mobile-drawer, .hero-editorial__visual { display: none !important; }
-  body { background: white; color: black; }
-  a { color: black; text-decoration: underline; }
-  .hero-editorial__title, .editorial-block__title, .stat__num { color: black !important; }
+  /* === Layout limpio para imprimir / guardar como PDF === */
+  @page {
+    size: A4;
+    margin: 18mm 16mm;
+  }
+
+  /* Ocultar elementos de UI que no deben aparecer en el PDF */
+  .site-header,
+  .fab-whatsapp,
+  .mobile-drawer,
+  .hero-editorial__visual,
+  .cta-editorial,
+  .brochure-hero__actions,
+  .nav-hub,
+  .site-footer .site-footer__bottom ul,
+  .menu-toggle,
+  .header-actions {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  a { color: black; text-decoration: none; }
+
+  /* Forzar colores legibles en print */
+  .hero-editorial__title,
+  .editorial-block__title,
+  .stat__num,
+  .brochure-hero__title,
+  .brochure-step__title,
+  h1, h2, h3, h4 {
+    color: black !important;
+  }
+
+  /* Naranja se mantiene pero menos saturado para que no consuma tinta */
+  .italic,
+  .chapter__num,
+  .reason__num,
+  .brochure-step__num,
+  .icon--block,
+  .icon--title,
+  .brochure-step__icon,
+  .brochure-benefit__icon,
+  .pioneer-badge .icon {
+    color: #b8530a !important;
+    fill: #b8530a !important;
+  }
+
+  /* Compactar secciones para que entre en menos paginas */
+  .section { padding-block: 18pt !important; }
+  .section--bg { background: white !important; }
+  .brochure-hero { padding-block: 0 !important; padding-top: 6pt !important; }
+  .brochure-step { padding-block: 14pt !important; page-break-inside: avoid; }
+  .brochure-benefits { page-break-inside: avoid; }
+  .reason { padding-block: 14pt !important; page-break-inside: avoid; }
+  .chapter { padding-block: 14pt !important; page-break-inside: avoid; }
+
+  /* Sin sombras ni bordes redondeados raros en print */
+  .service-card, .nav-card { box-shadow: none !important; border-radius: 0 !important; }
+
+  /* Imprimir el branding como header de página */
+  .site-footer {
+    padding-top: 24pt;
+    border-top: 1px solid #ccc;
+    font-size: 9pt;
+    color: #555 !important;
+  }
+
+  /* Evitar que titulos queden solos al final de pagina */
+  h1, h2, h3 { page-break-after: avoid; }
 }
