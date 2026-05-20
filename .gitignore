@@ -41,3 +41,6 @@ out/
 # Tooling
 .eslintcache
 .stylelintcache
+
+# PDF gen artifacts (working dir)
+_preview/

@@ -237,7 +237,8 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   .brand__icon { width: 1.5rem; height: 1.5rem; }
   .brand__name { font-size: 1rem; }           /* 16px */
 }
-.brand__name span {
+/* "Soft" — Lobster naranja (NO afecta a .brand__tagline) */
+.brand__name span:not(.brand__tagline) {
   font-family: var(--ts-font-brand-soft);     /* Lobster */
   font-weight: 400;
   font-style: normal;
@@ -247,6 +248,23 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   margin-left: 0.08em;
   transform: translateY(0.04em);
   display: inline-block;
+}
+/* "... Todo Bajo Control" — Lobster en azul claro del logo */
+.brand__tagline {
+  font-family: var(--ts-font-brand-soft);     /* Lobster */
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.85em;
+  color: #c9dee9;                              /* mismo azul claro que "Tributa" */
+  letter-spacing: 0;
+  margin-left: 0.5em;
+  transform: translateY(0.04em);
+  display: inline-block;
+  white-space: nowrap;
+}
+/* En mobile/tablet, la tagline se oculta para no atorar el header */
+@media (max-width: 1200px) {
+  .brand__tagline { display: none; }
 }
 /* Brand en footer — ligeramente mas chico */
 .site-footer .brand__name { font-size: 1.5rem; }
@@ -1247,6 +1265,61 @@ body.flow-modal-open { overflow: hidden; }
 }
 
 /* ============================================================
+   SOCIAL GRID — redes sociales en contacto.html
+   ============================================================ */
+.social-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--ts-border);
+}
+@media (min-width: 640px) { .social-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .social-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.social-link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ts-space-3);
+  padding: var(--ts-space-8) var(--ts-space-6);
+  border-bottom: 1px solid var(--ts-border);
+  text-decoration: none;
+  color: inherit;
+  transition: background var(--ts-duration) var(--ts-ease);
+}
+@media (min-width: 640px) {
+  .social-link:nth-child(odd) { border-right: 1px solid var(--ts-border); }
+}
+@media (min-width: 900px) {
+  .social-link { border-right: 1px solid var(--ts-border); border-bottom: 0; }
+  .social-link:last-child { border-right: 0; }
+}
+.social-link:hover { background: rgba(253, 118, 26, 0.04); }
+.social-link:hover .social-link__icon { transform: translateY(-2px); }
+
+.social-link__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--ts-orange);
+  transition: transform var(--ts-duration) var(--ts-ease);
+}
+.social-link__platform {
+  font-family: var(--ts-font-body);
+  font-size: var(--ts-text-xs);
+  font-weight: 600;
+  letter-spacing: var(--ts-tracking-wider);
+  text-transform: uppercase;
+  color: var(--ts-text-soft);
+}
+.social-link__handle {
+  font-family: var(--ts-font-display);
+  font-size: var(--ts-text-h4);
+  font-weight: 500;
+  color: var(--ts-ink);
+  letter-spacing: var(--ts-tracking-tight);
+}
+
+/* ============================================================
    FEATURE LIST — listas de "Que incluye" en service-* pages
    ============================================================ */
 .feature-list {
@@ -1729,10 +1802,11 @@ body.flow-modal-open { overflow: hidden; }
   /* === Layout limpio para imprimir / guardar como PDF === */
   @page {
     size: A4;
-    margin: 18mm 16mm;
+    margin: 22mm 16mm 18mm 16mm;
   }
 
-  /* Ocultar elementos de UI que no deben aparecer en el PDF */
+  /* Ocultar UI que no aplica en PDF.
+     El header del PDF se genera via --header-template de Chrome (NO inline). */
   .site-header,
   .fab-whatsapp,
   .mobile-drawer,
@@ -1742,7 +1816,10 @@ body.flow-modal-open { overflow: hidden; }
   .nav-hub,
   .site-footer .site-footer__bottom ul,
   .menu-toggle,
-  .header-actions {
+  .header-actions,
+  .site-nav,
+  .legal-article__back,
+  .link-arrow {
     display: none !important;
   }
 
@@ -1780,13 +1857,26 @@ body.flow-modal-open { overflow: hidden; }
   }
 
   /* Compactar secciones para que entre en menos paginas */
-  .section { padding-block: 18pt !important; }
+  .section { padding-block: 10pt !important; }
   .section--bg { background: white !important; }
-  .brochure-hero { padding-block: 0 !important; padding-top: 6pt !important; }
-  .brochure-step { padding-block: 14pt !important; page-break-inside: avoid; }
-  .brochure-benefits { page-break-inside: avoid; }
-  .reason { padding-block: 14pt !important; page-break-inside: avoid; }
-  .chapter { padding-block: 14pt !important; page-break-inside: avoid; }
+  .brochure-hero { padding-block: 6pt !important; padding-top: 0 !important; }
+  .brochure-hero__title { font-size: 22pt !important; margin-bottom: 6pt !important; }
+  .brochure-hero__lead { font-size: 10pt !important; margin-bottom: 0 !important; }
+  .brochure-step { padding-block: 8pt !important; page-break-inside: avoid; gap: 12pt !important; }
+  .brochure-step__num { font-size: 22pt !important; }
+  .brochure-step__icon { width: 14pt !important; height: 14pt !important; margin-bottom: 4pt !important; }
+  .brochure-step__title { font-size: 13pt !important; margin-bottom: 4pt !important; }
+  .brochure-step__lead { font-size: 10pt !important; margin-bottom: 4pt !important; }
+  .brochure-step__note { font-size: 9pt !important; margin-top: 4pt !important; }
+  .brochure-benefits { page-break-inside: avoid; gap: 14pt !important; }
+  .brochure-benefit__icon { width: 14pt !important; height: 14pt !important; margin-bottom: 4pt !important; }
+  .brochure-benefit h3 { font-size: 11pt !important; margin-bottom: 3pt !important; }
+  .brochure-benefit p { font-size: 9pt !important; }
+  .reason { padding-block: 10pt !important; page-break-inside: avoid; }
+  .chapter { padding-block: 10pt !important; page-break-inside: avoid; }
+  h2 { font-size: 16pt !important; margin-bottom: 4pt !important; }
+  /* Container narrow apply mas compacto en print */
+  .container--narrow { max-width: 100% !important; }
 
   /* Sin sombras ni bordes redondeados raros en print */
   .service-card, .nav-card { box-shadow: none !important; border-radius: 0 !important; }
