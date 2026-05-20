@@ -537,6 +537,139 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
 }
 
 /* ============================================================
+   SERVICES GRID — Lineas de negocio (6 cards)
+   ============================================================ */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ts-space-8);
+}
+@media (min-width: 640px)  { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(3, 1fr); gap: var(--ts-space-10); } }
+
+.service-card {
+  padding: var(--ts-space-8);
+  background: var(--ts-surface);
+  border: 1px solid var(--ts-border);
+  border-radius: var(--ts-radius-lg);
+  transition: transform var(--ts-duration) var(--ts-ease),
+              box-shadow var(--ts-duration) var(--ts-ease),
+              border-color var(--ts-duration) var(--ts-ease);
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ts-shadow-md);
+  border-color: var(--ts-orange);
+}
+.service-card .icon--block {
+  margin-bottom: var(--ts-space-5);
+  color: var(--ts-orange);
+}
+.service-card__title {
+  font-family: var(--ts-font-display);
+  font-size: var(--ts-text-h3);
+  font-weight: 500;
+  letter-spacing: var(--ts-tracking-tight);
+  line-height: var(--ts-leading-snug);
+  margin-bottom: var(--ts-space-3);
+  color: var(--ts-ink);
+}
+.service-card__lead {
+  font-size: var(--ts-text-md);
+  color: var(--ts-text-muted);
+  line-height: var(--ts-leading-relaxed);
+  margin: 0;
+}
+
+/* ============================================================
+   REASONS — Por que elegirnos (capitulos con icono)
+   ============================================================ */
+.reason {
+  display: grid;
+  gap: var(--ts-space-4) var(--ts-space-6);
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "num icon"
+    "body body";
+  padding-block: var(--ts-space-12);
+  border-top: 1px solid var(--ts-border);
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .reason {
+    grid-template-columns: 6rem 3.5rem 1fr;
+    grid-template-areas: "num icon body";
+    gap: var(--ts-space-8);
+    align-items: start;
+    padding-block: var(--ts-space-16);
+  }
+}
+.reason__num {
+  grid-area: num;
+  font-family: var(--ts-font-display);
+  font-weight: 500;
+  font-size: 2.75rem;
+  line-height: 1;
+  color: var(--ts-orange);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--ts-tracking-tight);
+}
+.icon--reason {
+  grid-area: icon;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--ts-navy);
+}
+.reason__body { grid-area: body; max-width: 56ch; }
+.reason__title {
+  font-family: var(--ts-font-display);
+  font-size: var(--ts-text-h2);
+  font-weight: 500;
+  letter-spacing: var(--ts-tracking-tight);
+  line-height: var(--ts-leading-tight);
+  margin-bottom: var(--ts-space-3);
+  color: var(--ts-ink);
+}
+.reason__lead {
+  font-size: var(--ts-text-lg);
+  color: var(--ts-text-muted);
+  line-height: var(--ts-leading-relaxed);
+  margin: 0;
+}
+
+/* ============================================================
+   TUTORIALS BLOCK — link a YouTube con teasers
+   ============================================================ */
+.tutorials-block {
+  max-width: 720px;
+  margin-inline: auto;
+  padding-block: var(--ts-space-12);
+}
+.tutorials-block__list {
+  list-style: none;
+  padding: 0;
+  margin: var(--ts-space-6) 0 var(--ts-space-8);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ts-space-3);
+}
+@media (min-width: 640px) { .tutorials-block__list { grid-template-columns: repeat(2, 1fr); } }
+.tutorials-block__list li {
+  position: relative;
+  padding-left: var(--ts-space-6);
+  font-size: var(--ts-text-md);
+  color: var(--ts-text-muted);
+  line-height: var(--ts-leading-normal);
+}
+.tutorials-block__list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--ts-orange);
+  font-size: 0.9em;
+}
+
+/* ============================================================
    MAPS BLOCK — Visítanos con embed de Google Maps
    ============================================================ */
 .maps-block {
