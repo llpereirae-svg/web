@@ -412,29 +412,37 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
 }
 
 /* ============================================================
-   PIONEER BADGE — eyebrow destacado con icono de estrella
+   PIONEER TAG — tagline editorial sin recuadro, solo tipografia
    ============================================================ */
 .pioneer-badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--ts-space-2);
-  padding: var(--ts-space-2) var(--ts-space-4);
+  gap: var(--ts-space-3);
   margin-bottom: var(--ts-space-8);
-  background: var(--ts-orange-highlight);
-  border: 1px solid rgba(253, 118, 26, 0.25);
-  border-radius: var(--ts-radius-full);
   font-family: var(--ts-font-body);
   font-size: var(--ts-text-xs);
   font-weight: 600;
   letter-spacing: var(--ts-tracking-wider);
   text-transform: uppercase;
   color: var(--ts-orange-deep);
+  position: relative;
+  padding-left: 0;
 }
 .pioneer-badge .icon {
-  width: 1rem;
-  height: 1rem;
+  width: 0.95rem;
+  height: 0.95rem;
   color: var(--ts-orange);
   fill: var(--ts-orange);
+  flex-shrink: 0;
+}
+/* Linea horizontal sutil despues del texto (estilo editorial Linear) */
+.pioneer-badge::after {
+  content: "";
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+  margin-left: var(--ts-space-2);
 }
 
 /* ============================================================
