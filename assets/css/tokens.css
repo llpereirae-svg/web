@@ -59,6 +59,20 @@
   src: url('../fonts/DMSans-SemiBold.woff2') format('woff2');
   font-weight: 600; font-style: normal; font-display: swap;
 }
+/* Tipografias OFICIALES del wordmark del logo:
+   - Avenida: la palabra "Tributa"
+   - Lobster: la palabra "Soft"
+   Estas SOLO se usan dentro de .brand__name (no como display general). */
+@font-face {
+  font-family: 'Avenida';
+  src: url('../fonts/Avenida.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Lobster';
+  src: url('../fonts/Lobster-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
 
 /* ---------- Tokens ---------- */
 :root {
@@ -104,6 +118,10 @@
   --ts-font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --ts-font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --ts-font-mono:    ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, monospace;
+
+  /* Tipografias del wordmark del logo (oficiales) */
+  --ts-font-brand-tributa: 'Avenida', 'Fraunces', Georgia, serif;
+  --ts-font-brand-soft:    'Lobster', 'Fraunces', cursive;
 
   /* Escala editorial (mas grande que antes) */
   --ts-text-mega:    7.5rem;     /* 120px — stats gigantes */

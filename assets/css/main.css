@@ -205,15 +205,36 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--ts-space-3);
-  font-family: var(--ts-font-display);
-  font-weight: 500;
-  font-size: 1.375rem;
+  gap: var(--ts-space-2);
   color: var(--ts-ink);
-  letter-spacing: var(--ts-tracking-tight);
+  line-height: 1;
+  text-decoration: none;
 }
-.brand__icon { width: 2rem; height: 2rem; }
-.brand__name span { color: var(--ts-orange); font-style: italic; font-weight: 600; }
+.brand__icon { width: 2.25rem; height: 2.25rem; flex-shrink: 0; }
+.brand__name {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--ts-font-brand-tributa);  /* Avenida */
+  font-weight: 400;
+  font-size: 1.75rem;                          /* 28px */
+  letter-spacing: 0.01em;
+  color: var(--ts-navy);                       /* Coincide con el wordmark del logo */
+  white-space: nowrap;
+}
+.brand__name span {
+  font-family: var(--ts-font-brand-soft);     /* Lobster */
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.15em;                           /* Lobster optimiza visualmente con +15% */
+  color: var(--ts-orange);
+  letter-spacing: 0;
+  margin-left: 0.08em;
+  transform: translateY(0.04em);
+  display: inline-block;
+}
+/* Brand en footer — ligeramente mas chico */
+.site-footer .brand__name { font-size: 1.5rem; }
+.site-footer .brand__icon { width: 2rem; height: 2rem; }
 
 .site-nav { display: none; align-items: center; gap: var(--ts-space-8); }
 .site-nav a {
