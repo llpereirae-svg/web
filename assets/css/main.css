@@ -1247,6 +1247,44 @@ body.flow-modal-open { overflow: hidden; }
 }
 
 /* ============================================================
+   FEATURE LIST — listas de "Que incluye" en service-* pages
+   ============================================================ */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--ts-border);
+}
+.feature-list li {
+  position: relative;
+  padding: var(--ts-space-5) 0 var(--ts-space-5) var(--ts-space-8);
+  border-bottom: 1px solid var(--ts-border);
+  font-size: var(--ts-text-md);
+  line-height: var(--ts-leading-relaxed);
+  color: var(--ts-text-muted);
+}
+.feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.6em;
+  width: 1.25rem;
+  height: 1px;
+  background: var(--ts-orange);
+}
+.feature-list li strong {
+  color: var(--ts-ink);
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .feature-list li { padding: var(--ts-space-6) 0 var(--ts-space-6) var(--ts-space-10); }
+  .feature-list li::before { width: 1.75rem; }
+}
+
+/* ============================================================
    QMV CARDS — Quienes Somos / Mision / Vision (nosotros.html)
    Mantiene la estructura visual del sitio original: linea
    horizontal arriba + titulo bold + parrafo.
