@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es-EC">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#1a1a1a" />
+  <title>BPO · Roles de pago — TributaSoft</title>
+  <meta name="description" content="Procesamiento de roles de pago semanal, quincenal o mensual. CSV listo para carga masiva al IESS." />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+  <link rel="apple-touch-icon" href="assets/img/logo.png" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+  <header class="site-header" id="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand" aria-label="TributaSoft — Inicio">
+        <img src="assets/img/logo.png" alt="" class="brand__icon" width="40" height="40" />
+        <span class="brand__name">Tributa<span>Soft</span><span class="brand__tagline">... Todo Bajo Control</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a href="servicios.html" aria-current="page">Servicios</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="tutoriales.html">Tutoriales</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="header-actions">
+        <a href="https://tbc.tributasoft.ec/Erp-web/templates/registro/login.xhtml?faces-redirect=true" class="btn btn--ghost btn--icon-mobile" rel="noopener" aria-label="Iniciar sesión">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          <span class="btn__label">Iniciar sesión</span>
+        </a>
+        <a href="https://llpereirae-svg.github.io/Ts/" class="btn btn--primary btn--icon-mobile" rel="noopener" aria-label="Empezar aquí">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.5-2 5-2 5s3.5-.5 5-2c.9-.9.9-2.4 0-3.3-.9-.9-2.4-.9-3.3 0z"/><path d="M11 13s5-1 8-4 5-7 5-7-4 2-7 5-4 6-6 6"/><path d="M16 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+          <span class="btn__label">Empezar aquí</span>
+        </a>
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-drawer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" data-open="false" aria-hidden="true">
+    <div class="mobile-drawer__panel" role="dialog" aria-modal="true" aria-label="Menú móvil">
+      <button type="button" class="mobile-drawer__close" id="drawer-close" aria-label="Cerrar menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+      </button>
+      <a href="servicios.html">Servicios</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="tutoriales.html">Tutoriales</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="https://tbc.tributasoft.ec/Erp-web/templates/registro/login.xhtml?faces-redirect=true" class="btn btn--ghost" rel="noopener" style="margin-top: auto;">Iniciar sesión</a>
+      <a href="https://llpereirae-svg.github.io/Ts/" class="btn btn--primary" rel="noopener">Empezar aquí</a>
+    </div>
+  </div>
+
+  <main id="top">
+    <section class="brochure-hero">
+      <div class="container container--narrow">
+        <a href="servicio-bpo.html" class="link-arrow" style="margin-bottom: var(--ts-space-6);">← Volver a BPO</a>
+        <span class="eyebrow eyebrow-line">BPO · Rol de pagos</span>
+        <h1 class="brochure-hero__title">Roles de pago <em class="italic">automatizados</em>.</h1>
+        <p class="brochure-hero__lead">
+          Entrega periódica del rol de empleados con archivo CSV listo para
+          cargas batch en la plataforma del IESS. Ideal para empresas con más
+          de 100 empleados: reduce errores y cuesta menos que un asistente
+          contable dedicado.
+        </p>
+        <div class="brochure-hero__actions">
+          <a href="https://wa.me/593969173466?text=Hola%20TributaSoft%2C%20me%20interesa%20el%20m%C3%B3dulo%20de%20BPO%20-%20Roles%20de%20pago.%0A%0A-%20Razon%20social%3A%20%0A-%20RUC%3A%20%0A-%20Cantidad%20de%20empleados%3A%20%0A-%20Periodicidad%20del%20rol%20(semanal%2Fquincenal%2Fmensual)%3A%20%0A%0AGracias." target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+            Solicitar propuesta
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--bg">
+      <div class="container container--narrow">
+        <header style="margin-bottom: var(--ts-space-10);">
+          <span class="eyebrow eyebrow-line">Qué incluye</span>
+          <h2 style="margin-top: var(--ts-space-4);">El proceso, <em class="italic">resuelto</em>.</h2>
+        </header>
+        <ul class="feature-list">
+          <li><strong>Entrega del rol:</strong> Semanal, quincenal o mensual según tu necesidad.</li>
+          <li><strong>Archivo CSV para IESS:</strong> Listo para subir en carga batch al portal del IESS, sin tipear nada a mano.</li>
+          <li><strong>Cálculos automáticos:</strong> Sueldos, horas extras, beneficios sociales, descuentos.</li>
+          <li><strong>Auditoría incluida:</strong> Validamos los cálculos antes de la entrega para evitar observaciones.</li>
+          <li><strong>Ahorro real:</strong> Cuesta menos que contratar a un asistente contable interno.</li>
+          <li><strong>Ideal +100 empleados:</strong> Donde el costo/beneficio del proceso manual ya no se sostiene.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta-editorial">
+      <div class="container container--narrow">
+        <h2 class="cta-editorial__title">¿Cuántos empleados manejas?</h2>
+        <p class="cta-editorial__lead">Cuéntanos y te armamos un plan a la medida de tu empresa.</p>
+        <div class="cta-editorial__actions">
+          <a href="https://wa.me/593969173466?text=Hola%20TributaSoft%2C%20me%20interesa%20el%20m%C3%B3dulo%20de%20BPO%20-%20Roles%20de%20pago.%0A%0A-%20Razon%20social%3A%20%0A-%20RUC%3A%20%0A-%20Cantidad%20de%20empleados%3A%20%0A-%20Periodicidad%20del%20rol%20(semanal%2Fquincenal%2Fmensual)%3A%20%0A%0AGracias." target="_blank" rel="noopener" class="btn btn--primary btn--lg">Solicitar propuesta</a>
+          <a href="servicio-bpo.html" class="btn btn--ghost btn--lg">Ver otros módulos BPO</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__bottom">
+        <p>© <span id="footer-year">2026</span> TributaSoft S.A. — Todos los derechos reservados · Ecuador</p>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; gap:1.5rem; font-size:0.875rem;">
+          <li><a href="terminos-de-servicio.html">Términos</a></li>
+          <li><a href="politica-de-privacidad.html">Privacidad</a></li>
+          <li><a href="politica-de-cookies.html">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <a class="fab-whatsapp" href="https://wa.me/593969173466?text=Hola%2C%20necesito%20ayuda%20con%20%5BDescriba%20brevemente%20el%20problema%5D." target="_blank" rel="noopener" aria-label="Soporte por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2c-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.5s1 2.8 1.2 3c.1.2 2 3.1 4.8 4.3 1.5.7 2.2.8 3 .7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+  </a>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
