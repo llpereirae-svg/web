@@ -262,9 +262,30 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   display: inline-block;
   white-space: nowrap;
 }
-/* En mobile/tablet, la tagline se oculta para no atorar el header */
-@media (max-width: 1200px) {
-  .brand__tagline { display: none; }
+/* En tablet/mobile la tagline se oculta para no romper el header.
+   Bump a 1280px para asegurar que NUNCA se vea suelta bajo el wordmark
+   por falta de espacio en viewports apretados. */
+@media (max-width: 1280px) {
+  .brand__tagline { display: none !important; }
+}
+/* La marca COMPLETA debe quedar siempre en una sola linea */
+.brand { flex-wrap: nowrap !important; min-width: 0; }
+.brand__name { flex-wrap: nowrap; }
+
+/* === Sin ligaduras raras (fix "diferencia" deformada por Fraunces) === */
+h1, h2, h3, h4,
+.cover-hero__title,
+.brochure-hero__title,
+.editorial-block__title,
+.chapter__title,
+.brochure-step__title,
+.qmv-card__title,
+.reason__title,
+.service-card__title,
+.nav-card__title,
+.legal-article__title {
+  font-variant-ligatures: no-discretionary-ligatures;
+  font-feature-settings: "calt" 0, "dlig" 0;
 }
 /* Brand en footer — ligeramente mas chico */
 .site-footer .brand__name { font-size: 1.5rem; }
@@ -646,18 +667,36 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
   border: 0;
   border-bottom: 1px solid var(--ts-border);
   border-radius: 0;
-  transition: background var(--ts-duration) var(--ts-ease);
+  position: relative;
+  overflow: hidden;
+  transition: background 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Linea naranja que crece de izq a derecha en hover (Apple-style) */
+.service-card::before {
+  content: "";
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 0; height: 2px;
+  background: var(--ts-orange);
+  transition: width 380ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .service-card:hover {
-  background: rgba(253, 118, 26, 0.04); /* leve tinte naranja en hover */
+  background: rgba(253, 118, 26, 0.05);
 }
+.service-card:hover::before { width: 100%; }
 .service-card .icon--block {
   margin-bottom: var(--ts-space-6);
   color: var(--ts-orange);
-  transition: transform var(--ts-duration) var(--ts-ease);
+  transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);  /* spring bounce */
 }
 .service-card:hover .icon--block {
-  transform: translateX(4px);
+  transform: translateY(-3px) scale(1.06);
+}
+/* Mobile: sin animaciones (estaticas) */
+@media (max-width: 640px) and (hover: none) {
+  .service-card::before,
+  .service-card .icon--block { transition: none !important; }
+  .service-card:hover { background: transparent; }
 }
 .service-card__title {
   font-family: var(--ts-font-display);
@@ -1487,9 +1526,20 @@ body.flow-modal-open { overflow: hidden; }
   text-decoration: none;
   color: inherit;
   border-bottom: 1px solid var(--ts-border);
-  transition: background var(--ts-duration) var(--ts-ease);
+  position: relative;
+  overflow: hidden;
+  transition: background 280ms cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 100%;
 }
+.nav-card::before {
+  content: "";
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 0; height: 2px;
+  background: var(--ts-orange);
+  transition: width 420ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-card:hover::before { width: 100%; }
 @media (min-width: 640px) {
   /* Linea vertical entre columnas en grid 2 col */
   .nav-card:nth-child(odd) { border-right: 1px solid var(--ts-border); }
