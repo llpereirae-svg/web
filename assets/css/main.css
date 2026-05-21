@@ -669,34 +669,63 @@ h1, h2, h3, h4,
   border-radius: 0;
   position: relative;
   overflow: hidden;
-  transition: background 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    background 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 320ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, background;
 }
-/* Linea naranja que crece de izq a derecha en hover (Apple-style) */
+/* Linea naranja gruesa que crece de izq a der en hover (visible) */
 .service-card::before {
   content: "";
   position: absolute;
   bottom: -1px; left: 0;
-  width: 0; height: 2px;
+  width: 0; height: 3px;
   background: var(--ts-orange);
-  transition: width 380ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 420ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(253, 118, 26, 0.08), rgba(60, 221, 199, 0.04));
+  opacity: 0;
+  transition: opacity 280ms ease;
+  pointer-events: none;
 }
 .service-card:hover {
-  background: rgba(253, 118, 26, 0.05);
+  background: rgba(253, 118, 26, 0.06);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -20px rgba(253, 118, 26, 0.25);
+  z-index: 2;
 }
 .service-card:hover::before { width: 100%; }
+.service-card:hover::after { opacity: 1; }
 .service-card .icon--block {
   margin-bottom: var(--ts-space-6);
   color: var(--ts-orange);
-  transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);  /* spring bounce */
+  transition: transform 380ms cubic-bezier(0.34, 1.8, 0.64, 1);  /* spring bounce mas marcado */
 }
 .service-card:hover .icon--block {
-  transform: translateY(-3px) scale(1.06);
+  transform: translateY(-5px) scale(1.12) rotate(-3deg);
 }
-/* Mobile: sin animaciones (estaticas) */
+.service-card__title { transition: color 240ms ease; }
+.service-card:hover .service-card__title { color: var(--ts-orange-deep); }
+
+/* Mobile: animaciones desactivadas (tap, no hover) */
 @media (max-width: 640px) and (hover: none) {
   .service-card::before,
-  .service-card .icon--block { transition: none !important; }
-  .service-card:hover { background: transparent; }
+  .service-card::after,
+  .service-card .icon--block,
+  .service-card { transition: none !important; }
+  .service-card:hover {
+    background: transparent;
+    transform: none;
+    box-shadow: none;
+  }
+  .service-card:active {
+    background: rgba(253, 118, 26, 0.08);
+  }
 }
 .service-card__title {
   font-family: var(--ts-font-display);
