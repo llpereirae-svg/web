@@ -1447,41 +1447,63 @@ body.flow-modal-open { overflow: hidden; }
 }
 
 /* ============================================================
-   SCROLL REVEAL — animaciones al hacer scroll
+   SCROLL REVEAL — animaciones dramaticas en ambas direcciones
+   Re-trigger automatico al volver a entrar al viewport.
+   data-scroll-dir="down|up" cambia la direccion del movimiento.
    ============================================================ */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 720ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateY(48px) scale(0.96);
+  filter: blur(4px);
+  transition:
+    opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
 }
-.reveal--left {
-  transform: translateX(-32px);
+/* Cuando el scroll va hacia ARRIBA, los elementos entran desde abajo (invertido) */
+.reveal[data-scroll-dir="up"] {
+  transform: translateY(-48px) scale(0.96);
 }
-.reveal--right {
-  transform: translateX(32px);
-}
-.reveal--down {
-  transform: translateY(-28px);
-}
-.reveal--scale {
-  transform: scale(0.94);
-}
+.reveal--left { transform: translateX(-60px) scale(0.96); }
+.reveal--right { transform: translateX(60px) scale(0.96); }
+.reveal--down { transform: translateY(-48px) scale(0.96); }
+.reveal--scale { transform: scale(0.88); }
+.reveal--rotate { transform: rotate(-3deg) translateY(40px) scale(0.94); }
+
 .reveal[data-visible="true"] {
   opacity: 1;
-  transform: translate(0, 0) scale(1);
+  transform: translate(0, 0) scale(1) rotate(0deg);
+  filter: blur(0);
 }
-/* Stagger delays: data-stagger="0" hasta "8" */
+
+/* Stagger delays mas marcados (cascada Apple-style) */
 .reveal[data-stagger="0"] { transition-delay: 0ms; }
-.reveal[data-stagger="1"] { transition-delay: 90ms; }
-.reveal[data-stagger="2"] { transition-delay: 180ms; }
-.reveal[data-stagger="3"] { transition-delay: 270ms; }
-.reveal[data-stagger="4"] { transition-delay: 360ms; }
-.reveal[data-stagger="5"] { transition-delay: 450ms; }
-.reveal[data-stagger="6"] { transition-delay: 540ms; }
-.reveal[data-stagger="7"] { transition-delay: 630ms; }
-.reveal[data-stagger="8"] { transition-delay: 720ms; }
+.reveal[data-stagger="1"] { transition-delay: 120ms; }
+.reveal[data-stagger="2"] { transition-delay: 240ms; }
+.reveal[data-stagger="3"] { transition-delay: 360ms; }
+.reveal[data-stagger="4"] { transition-delay: 480ms; }
+.reveal[data-stagger="5"] { transition-delay: 600ms; }
+.reveal[data-stagger="6"] { transition-delay: 720ms; }
+.reveal[data-stagger="7"] { transition-delay: 840ms; }
+.reveal[data-stagger="8"] { transition-delay: 960ms; }
+
+/* Titulos H1/H2: mas dramaticos */
+.reveal h1, .reveal h2, h1.reveal, h2.reveal {
+  letter-spacing: -0.02em;
+}
+/* Cards en grids (services, social, nav-hub): entrada con escala */
+.reveal.service-card, .reveal.social-link, .reveal.nav-card,
+.reveal.brochure-benefit, .reveal.qmv-card {
+  transform: translateY(40px) scale(0.93);
+}
+.reveal.service-card[data-visible="true"],
+.reveal.social-link[data-visible="true"],
+.reveal.nav-card[data-visible="true"],
+.reveal.brochure-benefit[data-visible="true"],
+.reveal.qmv-card[data-visible="true"] {
+  transform: translateY(0) scale(1);
+}
 
 /* Animacion especial para feature-list children con stagger automatico */
 .feature-list[data-reveal] li {

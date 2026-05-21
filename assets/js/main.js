@@ -124,35 +124,65 @@
     if (openOne) closeModal(openOne);
   });
 
-  /* ---------- Reveal on scroll (IntersectionObserver) ----------
-     Soporta:
-     - .reveal              -> fade-up
-     - .reveal.reveal--left -> slide-from-left
-     - .reveal.reveal--right -> slide-from-right
-     - .reveal.reveal--down -> slide-from-top
-     - .reveal.reveal--scale -> zoom-in
-     - .feature-list[data-reveal] -> stagger automatico de cada <li>
-     - data-stagger="0..8"  -> retraso escalonado */
+  /* ---------- Auto-aplicar .reveal a elementos clave (no marcados explicitamente) ---------- */
+  const autoTargets = $$(
+    'main section h1:not(.reveal), main section h2:not(.reveal), ' +
+    'main section h3:not(.reveal), main section p.brochure-hero__lead:not(.reveal), ' +
+    'main section .editorial-block__lead:not(.reveal), main section .qmv-card:not(.reveal), ' +
+    'main section .reason:not(.reveal), main section .chapter:not(.reveal), ' +
+    'main section .service-card:not(.reveal), main section .nav-card:not(.reveal), ' +
+    'main section .brochure-step:not(.reveal), main section .brochure-benefit:not(.reveal), ' +
+    'main section .social-link:not(.reveal), main section .maps-block:not(.reveal), ' +
+    'main section .tutorials-block:not(.reveal), main section .pioneer-badge:not(.reveal), ' +
+    'main section .cta-editorial__title:not(.reveal), main section .cta-editorial__lead:not(.reveal), ' +
+    'main section .cta-editorial__actions:not(.reveal)'
+  );
+  autoTargets.forEach((el, i) => {
+    el.classList.add('reveal');
+    // Stagger automatico para hijos hermanos (cards en grid)
+    const siblings = el.parentElement ? Array.from(el.parentElement.children).filter(c => c === el || c.classList.contains(el.classList[0])) : [];
+    const idx = siblings.indexOf(el);
+    if (idx >= 0 && idx < 6 && !el.hasAttribute('data-stagger')) {
+      el.setAttribute('data-stagger', String(idx));
+    }
+  });
+
+  /* ---------- Reveal on scroll (IntersectionObserver, re-trigger en ambas direcciones) ---------- */
   const revealEls = $$('.reveal, [data-reveal]');
   if (revealEls.length && 'IntersectionObserver' in window) {
+    // Track de direccion del scroll para variar efecto
+    let lastY = window.scrollY;
+    let scrollDir = 'down';
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      scrollDir = y > lastY ? 'down' : 'up';
+      lastY = y;
+    }, { passive: true });
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.setAttribute('data-visible', 'true');
-            io.unobserve(entry.target);
+            entry.target.setAttribute('data-scroll-dir', scrollDir);
+          } else {
+            // Solo resetear si esta MUY fuera (no en el limite) para no parpadear
+            const rect = entry.boundingClientRect;
+            const vh = window.innerHeight;
+            if (rect.top > vh + 100 || rect.bottom < -100) {
+              entry.target.setAttribute('data-visible', 'false');
+            }
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+      { threshold: [0, 0.15, 0.5], rootMargin: '0px 0px -8% 0px' }
     );
     revealEls.forEach((el) => io.observe(el));
   } else {
     revealEls.forEach((el) => el.setAttribute('data-visible', 'true'));
   }
 
-  /* ---------- Header parallax ligero al hacer scroll ----------
-     El brand del header sube/baja muy sutilmente segun el scroll (efecto premium). */
+  /* ---------- Header parallax: brand icon rota segun scroll ---------- */
   const brandIcon = $('.site-header .brand__icon');
   if (brandIcon && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     let lastScroll = 0;
@@ -163,18 +193,39 @@
       if (Math.abs(delta) > 2 && !ticking) {
         ticking = true;
         requestAnimationFrame(() => {
-          // Sutil rotacion segun direccion del scroll
-          const rotate = Math.max(-8, Math.min(8, delta * 0.15));
-          brandIcon.style.transform = `rotate(${rotate}deg)`;
-          // Volver a 0 despues
+          const rotate = Math.max(-10, Math.min(10, delta * 0.2));
+          brandIcon.style.transform = `rotate(${rotate}deg) scale(${1 + Math.min(0.05, Math.abs(delta) * 0.002)})`;
           clearTimeout(brandIcon._rt);
-          brandIcon._rt = setTimeout(() => { brandIcon.style.transform = 'rotate(0deg)'; }, 200);
+          brandIcon._rt = setTimeout(() => { brandIcon.style.transform = 'rotate(0deg) scale(1)'; }, 220);
           lastScroll = y;
           ticking = false;
         });
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
+  }
+
+  /* ---------- Parallax suave en hero sections (cover-hero, brochure-hero) ---------- */
+  const heroSections = $$('.cover-hero, .brochure-hero');
+  if (heroSections.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let ticking2 = false;
+    const onScrollHero = () => {
+      if (ticking2) return;
+      ticking2 = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        heroSections.forEach((hero) => {
+          const rect = hero.getBoundingClientRect();
+          if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+          const title = hero.querySelector('h1');
+          const lead = hero.querySelector('p');
+          if (title) title.style.transform = `translateY(${y * 0.12}px)`;
+          if (lead) lead.style.transform = `translateY(${y * 0.06}px)`;
+        });
+        ticking2 = false;
+      });
+    };
+    window.addEventListener('scroll', onScrollHero, { passive: true });
   }
 
 })();
