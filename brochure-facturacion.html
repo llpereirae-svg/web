@@ -65,14 +65,14 @@
           autorizada por el SRI. Sin formularios largos. Sin escribir datos a mano.
         </p>
         <div class="brochure-hero__actions">
-          <a href="pdf/brochure-facturacion.pdf" download class="btn btn--ghost btn--lg">
+          <button type="button" onclick="generateBrochurePDF()" class="btn btn--ghost btn--lg">
             Descargar PDF
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
               <polyline points="7 10 12 15 17 10"/>
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
-          </a>
+          </button>
           <a href="https://llpereirae-svg.github.io/Ts/" class="btn btn--primary btn--lg" rel="noopener">
             Empezar aquí
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -285,6 +285,31 @@
     </svg>
   </a>
 
+  <script>
+    window.BROCHURE_DATA = {
+      docName: "Brochure - Facturacion Electronica",
+      eyebrow: "Brochure · Facturacion electronica",
+      title: "De RUC a primera factura, en 5 minutos.",
+      lead: "5 pasos para crear tu cuenta y emitir tu primera factura electronica autorizada por el SRI. Sin formularios largos. Sin escribir datos a mano.",
+      steps: [
+        { num: "01", title: "Identidad",
+          lead: "Subes tu firma electronica y el certificado de RUC en PDF. El sistema lee automaticamente razon social, direccion, regimen y tipo de contribuyente." },
+        { num: "02", title: "Tus datos",
+          lead: "Revisas los campos auto-completados. Confirmas o cambias direccion, correo y celular. Si no hay nombre comercial, marcas 'No aplica'." },
+        { num: "03", title: "Verificacion por SMS y correo",
+          lead: "Recibes 2 codigos de 4 digitos: uno por mensaje y otro por correo. Los escribes y listo. Sin apps externas, sin codigos QR." },
+        { num: "04", title: "Datos tributarios y de facturacion",
+          lead: "Confirmas tu regimen (General o RIMPE), tipo de contribuyente y, si aplica, numero de resolucion. Comienzas desde cero o continuas tu numeracion previa." },
+        { num: "05", title: "Clave, logo y listo",
+          lead: "Creas tu clave, subes tu logo (o lo creamos con tu nombre comercial) y revisas el resumen. Recibes un correo con tus datos de acceso." },
+      ],
+      cta: {
+        title: "300 comprobantes electronicos gratis",
+        subtitle: "Sin tarjeta de credito. Sin contratos. Empieza hoy: llpereirae-svg.github.io/Ts/",
+      },
+    };
+  </script>
+  <script src="assets/js/pdf-brochure.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

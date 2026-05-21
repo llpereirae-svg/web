@@ -73,14 +73,14 @@
               <polyline points="12 5 19 12 12 19"/>
             </svg>
           </a>
-          <a href="pdf/brochure-urbanizaciones.pdf" download class="btn btn--ghost btn--lg">
+          <button type="button" onclick="generateBrochurePDF()" class="btn btn--ghost btn--lg">
             Descargar PDF
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
               <polyline points="7 10 12 15 17 10"/>
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -297,6 +297,35 @@
     </svg>
   </a>
 
+  <script>
+    window.BROCHURE_DATA = {
+      docName: "Brochure - Urbanizaciones",
+      eyebrow: "Brochure · Urbanizaciones",
+      title: "Tu condominio, sin papeleo ni hojas de calculo.",
+      lead: "7 pasos integrados en una sola plataforma. Desde la facturacion de alicuotas hasta la declaracion de impuestos al SRI, todo automatizado.",
+      steps: [
+        { num: "01", title: "Facturacion automatica",
+          lead: "Genera facturas mensuales de alicuotas para todos los propietarios con un solo clic. Sin re-tipear datos." },
+        { num: "02", title: "Cobros masivos",
+          lead: "Procesa pagos de decenas o cientos de residentes en una sola operacion. Conciliacion bancaria en lote." },
+        { num: "03", title: "Estado de cuenta por inquilino",
+          lead: "Cada propietario accede a su historial completo: facturas, pagos, saldos pendientes en tiempo real." },
+        { num: "04", title: "Avisos de cobro automaticos",
+          lead: "Notificaciones por correo o WhatsApp ante atrasos. Sin perder tardes recordando deudas por chat." },
+        { num: "05", title: "Asistencia legal",
+          lead: "Acompanamiento juridico para el cobro de alicuotas atrasadas via proceso judicial." },
+        { num: "06", title: "Pagos automatizados",
+          lead: "Conciliacion bancaria automatica. Cada deposito se empareja con la factura del propietario correspondiente." },
+        { num: "07", title: "Reportes tributarios",
+          lead: "Informes listos para la declaracion al SRI. Exporta a Excel o PDF sin manipular un solo dato a mano." },
+      ],
+      cta: {
+        title: "Solicita una demo gratuita",
+        subtitle: "WhatsApp: +593 96 917 3466 · contabilidad@tributasoft.ec",
+      },
+    };
+  </script>
+  <script src="assets/js/pdf-brochure.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
