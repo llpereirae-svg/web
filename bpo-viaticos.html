@@ -9,8 +9,8 @@
   <meta name="description" content="Procesamiento de gastos de viaje. Reportes de comportamiento por colaborador integrados con el ATS." />
   <link rel="icon" type="image/png" href="assets/img/logo.png" />
   <link rel="apple-touch-icon" href="assets/img/logo.png" />
-  <link rel="stylesheet" href="assets/css/tokens.css?v=20260520b" />
-  <link rel="stylesheet" href="assets/css/main.css?v=20260520b" />
+  <link rel="stylesheet" href="assets/css/tokens.css?v=20260520c" />
+  <link rel="stylesheet" href="assets/css/main.css?v=20260520c" />
 </head>
 <body>
 
@@ -61,11 +61,11 @@
       <div class="container container--narrow">
         <a href="servicio-bpo.html" class="link-arrow" style="margin-bottom: var(--ts-space-6);">← Volver a BPO</a>
         <span class="eyebrow eyebrow-line">BPO · Gastos de viaje (viaticos)</span>
-        <h1 class="brochure-hero__title">Viaticos <em class="italic">bajo control</em>.</h1>
-        <p class="brochure-hero__lead">
+        <h1 class="brochure-hero__title reveal">Viaticos <em class="italic">bajo control</em>.</h1>
+        <p class="brochure-hero__lead reveal" data-stagger="1">
           Procesamos los documentos electronicos del SRI correspondientes a viaticos. La empresa obtiene reportes claros del comportamiento de cada vendedor o colaborador, con metricas accionables. Se integra perfectamente con el proceso del ATS.
         </p>
-        <div class="brochure-hero__actions">
+        <div class="brochure-hero__actions reveal" data-stagger="2">
           <a href="https://wa.me/593969173466?text=Hola%20TributaSoft%2C%20me%20interesa%20el%20m%C3%B3dulo%20de%20BPO%20-%20Vi%C3%A1ticos.%0A%0A-%20Razon%20social%3A%20%0A-%20RUC%3A%20%0A-%20Cantidad%20aprox.%20de%20colaboradores%20viajeros%3A%20%0A%0AGracias." target="_blank" rel="noopener" class="btn btn--primary btn--lg">
             Solicitar propuesta
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -76,23 +76,35 @@
 
     <section class="section section--bg">
       <div class="container container--narrow">
-        <header style="margin-bottom: var(--ts-space-10);">
+        <header class="reveal" style="margin-bottom: var(--ts-space-10);">
           <span class="eyebrow eyebrow-line">Qué incluye</span>
           <h2 style="margin-top: var(--ts-space-4);">El proceso, <em class="italic">resuelto</em>.</h2>
         </header>
-        <ul class="feature-list">
-          <li><strong>Carga de comprobantes SRI:</strong> Procesamos los documentos electronicos asociados a viaticos.</li>
-          <li><strong>Reportes por colaborador:</strong> Visualiza como se comporta cada vendedor o equipo.</li>
-          <li><strong>Metricas accionables:</strong> Datos listos para tomar decisiones sobre presupuesto de viajes.</li>
-          <li><strong>Integracion con ATS:</strong> Los viaticos se reflejan automaticamente en el ATS mensual.</li>
-          <li><strong>Auditoria rapida:</strong> Detectamos duplicados y montos atipicos antes de declarar.</li>
-          <li><strong>Cumplimiento total:</strong> Cumple con la normativa tributaria sobre gastos deducibles.</li>
+        <ul class="feature-list" data-reveal>
+          <li>
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <strong>Carga de comprobantes SRI:</strong> Procesamos los documentos electronicos asociados a viaticos.</li>
+          <li>
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <strong>Reportes por colaborador:</strong> Visualiza como se comporta cada vendedor o equipo.</li>
+          <li>
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+            <strong>Metricas accionables:</strong> Datos listos para tomar decisiones sobre presupuesto de viajes.</li>
+          <li>
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <strong>Integracion con ATS:</strong> Los viaticos se reflejan automaticamente en el ATS mensual.</li>
+          <li>
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <strong>Auditoria rapida:</strong> Detectamos duplicados y montos atipicos antes de declarar.</li>
+          <li>
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <strong>Cumplimiento total:</strong> Cumple con la normativa tributaria sobre gastos deducibles.</li>
         </ul>
       </div>
     </section>
 
     <section class="cta-editorial">
-      <div class="container container--narrow">
+      <div class="container container--narrow reveal">
         <h2 class="cta-editorial__title">¿Tu equipo viaja mucho?</h2>
         <p class="cta-editorial__lead">Te mostramos como nuestro modulo transforma el control de viaticos.</p>
         <div class="cta-editorial__actions">
@@ -120,6 +132,6 @@
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2c-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.5s1 2.8 1.2 3c.1.2 2 3.1 4.8 4.3 1.5.7 2.2.8 3 .7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
   </a>
 
-  <script src="assets/js/main.js?v=20260520b" defer></script>
+  <script src="assets/js/main.js?v=20260520c" defer></script>
 </body>
 </html>

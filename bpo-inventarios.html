@@ -9,8 +9,8 @@
   <meta name="description" content="Modulo de inventarios con sinergia entre facturas y existencias. Lotes, edades y liquidaciones aduaneras." />
   <link rel="icon" type="image/png" href="assets/img/logo.png" />
   <link rel="apple-touch-icon" href="assets/img/logo.png" />
-  <link rel="stylesheet" href="assets/css/tokens.css?v=20260520b" />
-  <link rel="stylesheet" href="assets/css/main.css?v=20260520b" />
+  <link rel="stylesheet" href="assets/css/tokens.css?v=20260520c" />
+  <link rel="stylesheet" href="assets/css/main.css?v=20260520c" />
 </head>
 <body>
 
@@ -61,11 +61,11 @@
       <div class="container container--narrow">
         <a href="servicio-bpo.html" class="link-arrow" style="margin-bottom: var(--ts-space-6);">← Volver a BPO</a>
         <span class="eyebrow eyebrow-line">BPO · Control de inventarios</span>
-        <h1 class="brochure-hero__title">Inventarios con <em class="italic">precision</em>.</h1>
-        <p class="brochure-hero__lead">
+        <h1 class="brochure-hero__title reveal">Inventarios con <em class="italic">precision</em>.</h1>
+        <p class="brochure-hero__lead reveal" data-stagger="1">
           Modulo de inventarios que trabaja en sinergia con las facturas emitidas y recibidas. Permite registrar liquidaciones aduaneras y manejar inventarios por lotes o edades. Especializado para empresas que requieren esta metodologia de control.
         </p>
-        <div class="brochure-hero__actions">
+        <div class="brochure-hero__actions reveal" data-stagger="2">
           <a href="https://wa.me/593969173466?text=Hola%20TributaSoft%2C%20me%20interesa%20el%20m%C3%B3dulo%20de%20BPO%20-%20Control%20de%20inventarios.%0A%0A-%20Razon%20social%3A%20%0A-%20RUC%3A%20%0A-%20Tipo%20de%20inventario%20(lotes%2Fedades%2Fmixto)%3A%20%0A%0AGracias." target="_blank" rel="noopener" class="btn btn--primary btn--lg">
             Solicitar propuesta
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -76,23 +76,35 @@
 
     <section class="section section--bg">
       <div class="container container--narrow">
-        <header style="margin-bottom: var(--ts-space-10);">
+        <header class="reveal" style="margin-bottom: var(--ts-space-10);">
           <span class="eyebrow eyebrow-line">Qué incluye</span>
           <h2 style="margin-top: var(--ts-space-4);">El proceso, <em class="italic">resuelto</em>.</h2>
         </header>
-        <ul class="feature-list">
-          <li><strong>Sinergia con facturas:</strong> Cada venta o compra actualiza el stock automaticamente.</li>
-          <li><strong>Lotes y edades:</strong> Manejo riguroso para industrias con caducidad o trazabilidad.</li>
-          <li><strong>Liquidaciones aduaneras:</strong> Registra costos de importacion con su impacto en el costo unitario.</li>
-          <li><strong>Kardex automatico:</strong> Historico de movimientos por producto, listo para auditoria.</li>
-          <li><strong>Rotacion e indicadores:</strong> Visualiza que productos rotan y cuales estan detenidos.</li>
-          <li><strong>Reportes de stock:</strong> Existencias por bodega, sucursal o categoria.</li>
+        <ul class="feature-list" data-reveal>
+          <li>
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            <strong>Sinergia con facturas:</strong> Cada venta o compra actualiza el stock automaticamente.</li>
+          <li>
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <strong>Lotes y edades:</strong> Manejo riguroso para industrias con caducidad o trazabilidad.</li>
+          <li>
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <strong>Liquidaciones aduaneras:</strong> Registra costos de importacion con su impacto en el costo unitario.</li>
+          <li>
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="13" y2="15"/></svg>
+            <strong>Kardex automatico:</strong> Historico de movimientos por producto, listo para auditoria.</li>
+          <li>
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+            <strong>Rotacion e indicadores:</strong> Visualiza que productos rotan y cuales estan detenidos.</li>
+          <li>
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20V8l10-5 10 5v12"/><polyline points="2 20 22 20"/><rect x="6" y="14" width="4" height="6"/><rect x="14" y="14" width="4" height="6"/></svg>
+            <strong>Reportes de stock:</strong> Existencias por bodega, sucursal o categoria.</li>
         </ul>
       </div>
     </section>
 
     <section class="cta-editorial">
-      <div class="container container--narrow">
+      <div class="container container--narrow reveal">
         <h2 class="cta-editorial__title">¿Tu inventario es complejo?</h2>
         <p class="cta-editorial__lead">Adaptamos el modulo a tu metodologia especifica.</p>
         <div class="cta-editorial__actions">
@@ -120,6 +132,6 @@
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2c-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.5s1 2.8 1.2 3c.1.2 2 3.1 4.8 4.3 1.5.7 2.2.8 3 .7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
   </a>
 
-  <script src="assets/js/main.js?v=20260520b" defer></script>
+  <script src="assets/js/main.js?v=20260520c" defer></script>
 </body>
 </html>

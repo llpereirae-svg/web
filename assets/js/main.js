@@ -124,9 +124,17 @@
     if (openOne) closeModal(openOne);
   });
 
-  /* ---------- Reveal on scroll (IntersectionObserver) ---------- */
-  const reveals = $$('.reveal');
-  if (reveals.length && 'IntersectionObserver' in window) {
+  /* ---------- Reveal on scroll (IntersectionObserver) ----------
+     Soporta:
+     - .reveal              -> fade-up
+     - .reveal.reveal--left -> slide-from-left
+     - .reveal.reveal--right -> slide-from-right
+     - .reveal.reveal--down -> slide-from-top
+     - .reveal.reveal--scale -> zoom-in
+     - .feature-list[data-reveal] -> stagger automatico de cada <li>
+     - data-stagger="0..8"  -> retraso escalonado */
+  const revealEls = $$('.reveal, [data-reveal]');
+  if (revealEls.length && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -136,12 +144,37 @@
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
     );
-    reveals.forEach((el) => io.observe(el));
+    revealEls.forEach((el) => io.observe(el));
   } else {
-    // Fallback: si no hay IntersectionObserver, mostrar todo al toque
-    reveals.forEach((el) => el.setAttribute('data-visible', 'true'));
+    revealEls.forEach((el) => el.setAttribute('data-visible', 'true'));
+  }
+
+  /* ---------- Header parallax ligero al hacer scroll ----------
+     El brand del header sube/baja muy sutilmente segun el scroll (efecto premium). */
+  const brandIcon = $('.site-header .brand__icon');
+  if (brandIcon && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let lastScroll = 0;
+    let ticking = false;
+    const handleScroll = () => {
+      const y = window.scrollY;
+      const delta = y - lastScroll;
+      if (Math.abs(delta) > 2 && !ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          // Sutil rotacion segun direccion del scroll
+          const rotate = Math.max(-8, Math.min(8, delta * 0.15));
+          brandIcon.style.transform = `rotate(${rotate}deg)`;
+          // Volver a 0 despues
+          clearTimeout(brandIcon._rt);
+          brandIcon._rt = setTimeout(() => { brandIcon.style.transform = 'rotate(0deg)'; }, 200);
+          lastScroll = y;
+          ticking = false;
+        });
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
   }
 
 })();

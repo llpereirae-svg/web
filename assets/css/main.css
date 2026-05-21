@@ -1388,7 +1388,7 @@ body.flow-modal-open { overflow: hidden; }
 }
 
 /* ============================================================
-   FEATURE LIST — listas de "Que incluye" en service-* pages
+   FEATURE LIST — listas de "Que incluye" con iconos
    ============================================================ */
 .feature-list {
   list-style: none;
@@ -1401,28 +1401,112 @@ body.flow-modal-open { overflow: hidden; }
 }
 .feature-list li {
   position: relative;
-  padding: var(--ts-space-5) 0 var(--ts-space-5) var(--ts-space-8);
+  padding: var(--ts-space-5) 0 var(--ts-space-5) var(--ts-space-12);
   border-bottom: 1px solid var(--ts-border);
   font-size: var(--ts-text-md);
   line-height: var(--ts-leading-relaxed);
   color: var(--ts-text-muted);
-}
-.feature-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 1.6em;
-  width: 1.25rem;
-  height: 1px;
-  background: var(--ts-orange);
+  transition: padding-left 220ms cubic-bezier(0.4, 0, 0.2, 1),
+              background 220ms ease;
 }
 .feature-list li strong {
   color: var(--ts-ink);
   font-weight: 600;
 }
+/* Icono inline al inicio del li (puede ser <svg class="feat-icon">) */
+.feature-list li .feat-icon {
+  position: absolute;
+  left: 0;
+  top: 1.5em;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--ts-orange);
+  transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              color 220ms ease;
+}
+/* Fallback: si NO hay icono, usar el subrayado naranja como bullet */
+.feature-list li:not(:has(.feat-icon))::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.6em;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--ts-orange);
+}
+.feature-list li:hover {
+  padding-left: calc(var(--ts-space-12) + 4px);
+  background: rgba(253, 118, 26, 0.03);
+}
+.feature-list li:hover .feat-icon {
+  transform: scale(1.15) rotate(-6deg);
+}
 @media (min-width: 768px) {
-  .feature-list li { padding: var(--ts-space-6) 0 var(--ts-space-6) var(--ts-space-10); }
-  .feature-list li::before { width: 1.75rem; }
+  .feature-list li { padding: var(--ts-space-6) 0 var(--ts-space-6) var(--ts-space-16); }
+  .feature-list li .feat-icon { width: 1.75rem; height: 1.75rem; left: 0.5rem; }
+}
+
+/* ============================================================
+   SCROLL REVEAL — animaciones al hacer scroll
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 720ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal--left {
+  transform: translateX(-32px);
+}
+.reveal--right {
+  transform: translateX(32px);
+}
+.reveal--down {
+  transform: translateY(-28px);
+}
+.reveal--scale {
+  transform: scale(0.94);
+}
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+/* Stagger delays: data-stagger="0" hasta "8" */
+.reveal[data-stagger="0"] { transition-delay: 0ms; }
+.reveal[data-stagger="1"] { transition-delay: 90ms; }
+.reveal[data-stagger="2"] { transition-delay: 180ms; }
+.reveal[data-stagger="3"] { transition-delay: 270ms; }
+.reveal[data-stagger="4"] { transition-delay: 360ms; }
+.reveal[data-stagger="5"] { transition-delay: 450ms; }
+.reveal[data-stagger="6"] { transition-delay: 540ms; }
+.reveal[data-stagger="7"] { transition-delay: 630ms; }
+.reveal[data-stagger="8"] { transition-delay: 720ms; }
+
+/* Animacion especial para feature-list children con stagger automatico */
+.feature-list[data-reveal] li {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.feature-list[data-reveal][data-visible="true"] li { opacity: 1; transform: translateX(0); }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(1) { transition-delay: 0ms; }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(2) { transition-delay: 80ms; }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(3) { transition-delay: 160ms; }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(4) { transition-delay: 240ms; }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(5) { transition-delay: 320ms; }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(6) { transition-delay: 400ms; }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(7) { transition-delay: 480ms; }
+
+/* Reduce motion (a11y) */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal--left, .reveal--right, .reveal--down, .reveal--scale,
+  .feature-list[data-reveal] li {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ============================================================
