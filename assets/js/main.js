@@ -124,104 +124,56 @@
     if (openOne) closeModal(openOne);
   });
 
-  /* ---------- Auto-aplicar .reveal a elementos clave (no marcados explicitamente) ---------- */
+  /* ---------- Auto-aplicar .reveal SOLO a contenedores principales (perf) ----------
+     Antes aplicaba a TODOS los h1/h2/h3/p/cards -> demasiados elementos animando
+     simultaneamente causan lag. Ahora solo bloques de alto nivel. */
   const autoTargets = $$(
-    'main section h1:not(.reveal), main section h2:not(.reveal), ' +
-    'main section h3:not(.reveal), main section p.brochure-hero__lead:not(.reveal), ' +
-    'main section .editorial-block__lead:not(.reveal), main section .qmv-card:not(.reveal), ' +
-    'main section .reason:not(.reveal), main section .chapter:not(.reveal), ' +
-    'main section .service-card:not(.reveal), main section .nav-card:not(.reveal), ' +
-    'main section .brochure-step:not(.reveal), main section .brochure-benefit:not(.reveal), ' +
-    'main section .social-link:not(.reveal), main section .maps-block:not(.reveal), ' +
-    'main section .tutorials-block:not(.reveal), main section .pioneer-badge:not(.reveal), ' +
-    'main section .cta-editorial__title:not(.reveal), main section .cta-editorial__lead:not(.reveal), ' +
-    'main section .cta-editorial__actions:not(.reveal)'
+    'main section .brochure-hero__title:not(.reveal), ' +
+    'main section .brochure-hero__lead:not(.reveal), ' +
+    'main section .brochure-hero__actions:not(.reveal), ' +
+    'main section .qmv-card:not(.reveal), ' +
+    'main section .reason:not(.reveal), ' +
+    'main section .chapter:not(.reveal), ' +
+    'main section .service-card:not(.reveal), ' +
+    'main section .nav-card:not(.reveal), ' +
+    'main section .brochure-step:not(.reveal), ' +
+    'main section .brochure-benefit:not(.reveal), ' +
+    'main section .social-link:not(.reveal)'
   );
-  autoTargets.forEach((el, i) => {
+  autoTargets.forEach((el) => {
     el.classList.add('reveal');
-    // Stagger automatico para hijos hermanos (cards en grid)
-    const siblings = el.parentElement ? Array.from(el.parentElement.children).filter(c => c === el || c.classList.contains(el.classList[0])) : [];
-    const idx = siblings.indexOf(el);
-    if (idx >= 0 && idx < 6 && !el.hasAttribute('data-stagger')) {
-      el.setAttribute('data-stagger', String(idx));
+    // Stagger automatico para hijos hermanos en grids
+    const parent = el.parentElement;
+    if (parent && !el.hasAttribute('data-stagger')) {
+      const siblings = Array.from(parent.children).filter(c => c.tagName === el.tagName || c.classList.contains(el.classList[0]));
+      const idx = siblings.indexOf(el);
+      if (idx >= 0 && idx < 6) el.setAttribute('data-stagger', String(idx));
     }
   });
 
-  /* ---------- Reveal on scroll (IntersectionObserver, re-trigger en ambas direcciones) ---------- */
+  /* ---------- Reveal on scroll — SINGLE FIRE (unobserve despues de animar) ----------
+     Re-trigger en ambas direcciones causaba lag al scrollear rapido.
+     Mejor animar UNA VEZ por elemento -> snappy y sin jank. */
   const revealEls = $$('.reveal, [data-reveal]');
   if (revealEls.length && 'IntersectionObserver' in window) {
-    // Track de direccion del scroll para variar efecto
-    let lastY = window.scrollY;
-    let scrollDir = 'down';
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      scrollDir = y > lastY ? 'down' : 'up';
-      lastY = y;
-    }, { passive: true });
-
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.setAttribute('data-visible', 'true');
-            entry.target.setAttribute('data-scroll-dir', scrollDir);
-          } else {
-            // Reset siempre que salga del viewport -> reanimacion al volver
-            entry.target.setAttribute('data-visible', 'false');
+            io.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -12% 0px' }
+      { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
     );
     revealEls.forEach((el) => io.observe(el));
   } else {
     revealEls.forEach((el) => el.setAttribute('data-visible', 'true'));
   }
 
-  /* ---------- Header parallax: brand icon rota segun scroll ---------- */
-  const brandIcon = $('.site-header .brand__icon');
-  if (brandIcon && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    let lastScroll = 0;
-    let ticking = false;
-    const handleScroll = () => {
-      const y = window.scrollY;
-      const delta = y - lastScroll;
-      if (Math.abs(delta) > 2 && !ticking) {
-        ticking = true;
-        requestAnimationFrame(() => {
-          const rotate = Math.max(-10, Math.min(10, delta * 0.2));
-          brandIcon.style.transform = `rotate(${rotate}deg) scale(${1 + Math.min(0.05, Math.abs(delta) * 0.002)})`;
-          clearTimeout(brandIcon._rt);
-          brandIcon._rt = setTimeout(() => { brandIcon.style.transform = 'rotate(0deg) scale(1)'; }, 220);
-          lastScroll = y;
-          ticking = false;
-        });
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-  }
-
-  /* ---------- Parallax suave en hero sections (cover-hero, brochure-hero) ---------- */
-  const heroSections = $$('.cover-hero, .brochure-hero');
-  if (heroSections.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    let ticking2 = false;
-    const onScrollHero = () => {
-      if (ticking2) return;
-      ticking2 = true;
-      requestAnimationFrame(() => {
-        const y = window.scrollY;
-        heroSections.forEach((hero) => {
-          const rect = hero.getBoundingClientRect();
-          if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-          const title = hero.querySelector('h1');
-          const lead = hero.querySelector('p');
-          if (title) title.style.transform = `translateY(${y * 0.12}px)`;
-          if (lead) lead.style.transform = `translateY(${y * 0.06}px)`;
-        });
-        ticking2 = false;
-      });
-    };
-    window.addEventListener('scroll', onScrollHero, { passive: true });
-  }
+  /* Parallax del hero y rotacion del logo: DESHABILITADOS
+     Eran continuos en cada scroll event -> causaban jank notable.
+     El sitio se siente mas snappy sin ellos. */
 
 })();

@@ -1447,62 +1447,50 @@ body.flow-modal-open { overflow: hidden; }
 }
 
 /* ============================================================
-   SCROLL REVEAL — animaciones dramaticas en ambas direcciones
-   Re-trigger automatico al volver a entrar al viewport.
-   data-scroll-dir="down|up" cambia la direccion del movimiento.
+   SCROLL REVEAL — OPTIMIZADO PARA PERFORMANCE
+   Solo opacity + transform (GPU-friendly). Sin filter blur (caro).
+   Sin box-shadow durante transicion. Duracion corta.
    ============================================================ */
 .reveal {
   opacity: 0;
-  transform: translateY(48px) scale(0.96);
-  filter: blur(4px);
+  transform: translate3d(0, 28px, 0);
   transition:
-    opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
-    filter 700ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+    opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* Cuando el scroll va hacia ARRIBA, los elementos entran desde abajo (invertido) */
-.reveal[data-scroll-dir="up"] {
-  transform: translateY(-48px) scale(0.96);
-}
-.reveal--left { transform: translateX(-60px) scale(0.96); }
-.reveal--right { transform: translateX(60px) scale(0.96); }
-.reveal--down { transform: translateY(-48px) scale(0.96); }
-.reveal--scale { transform: scale(0.88); }
-.reveal--rotate { transform: rotate(-3deg) translateY(40px) scale(0.94); }
+.reveal--left  { transform: translate3d(-32px, 0, 0); }
+.reveal--right { transform: translate3d(32px, 0, 0); }
+.reveal--down  { transform: translate3d(0, -28px, 0); }
+.reveal--scale { transform: scale(0.94); }
 
 .reveal[data-visible="true"] {
   opacity: 1;
-  transform: translate(0, 0) scale(1) rotate(0deg);
-  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+  will-change: auto;
 }
 
-/* Stagger delays mas marcados (cascada Apple-style) */
+/* Stagger reducido para que se sienta mas snappy */
 .reveal[data-stagger="0"] { transition-delay: 0ms; }
-.reveal[data-stagger="1"] { transition-delay: 120ms; }
-.reveal[data-stagger="2"] { transition-delay: 240ms; }
-.reveal[data-stagger="3"] { transition-delay: 360ms; }
-.reveal[data-stagger="4"] { transition-delay: 480ms; }
-.reveal[data-stagger="5"] { transition-delay: 600ms; }
-.reveal[data-stagger="6"] { transition-delay: 720ms; }
-.reveal[data-stagger="7"] { transition-delay: 840ms; }
-.reveal[data-stagger="8"] { transition-delay: 960ms; }
+.reveal[data-stagger="1"] { transition-delay: 60ms; }
+.reveal[data-stagger="2"] { transition-delay: 120ms; }
+.reveal[data-stagger="3"] { transition-delay: 180ms; }
+.reveal[data-stagger="4"] { transition-delay: 240ms; }
+.reveal[data-stagger="5"] { transition-delay: 300ms; }
+.reveal[data-stagger="6"] { transition-delay: 360ms; }
+.reveal[data-stagger="7"] { transition-delay: 420ms; }
+.reveal[data-stagger="8"] { transition-delay: 480ms; }
 
-/* Titulos H1/H2: mas dramaticos */
-.reveal h1, .reveal h2, h1.reveal, h2.reveal {
-  letter-spacing: -0.02em;
-}
-/* Cards en grids (services, social, nav-hub): entrada con escala */
+/* Cards en grids: misma animacion translate (sin scale extra, mas snappy) */
 .reveal.service-card, .reveal.social-link, .reveal.nav-card,
 .reveal.brochure-benefit, .reveal.qmv-card {
-  transform: translateY(40px) scale(0.93);
+  transform: translate3d(0, 24px, 0);
 }
 .reveal.service-card[data-visible="true"],
 .reveal.social-link[data-visible="true"],
 .reveal.nav-card[data-visible="true"],
 .reveal.brochure-benefit[data-visible="true"],
 .reveal.qmv-card[data-visible="true"] {
-  transform: translateY(0) scale(1);
+  transform: translate3d(0, 0, 0);
 }
 
 /* Animacion especial para feature-list children con stagger automatico */
@@ -1521,59 +1509,24 @@ body.flow-modal-open { overflow: hidden; }
 .feature-list[data-reveal][data-visible="true"] li:nth-child(6) { transition-delay: 500ms; }
 .feature-list[data-reveal][data-visible="true"] li:nth-child(7) { transition-delay: 600ms; }
 
-/* ===== ANIMACION DEDICADA AL ICONO (entrada con pop + rotacion) =====
-   Solo en hover-capable (PC). El icono mismo tiene su propia entrada al
-   scroll independiente del padre <li>, mas dramatica y visible. */
+/* === Animacion suave de iconos en PC (sin rotacion - mas barato) === */
 @media (hover: hover) and (pointer: fine) {
   .feature-list[data-reveal] li .feat-icon {
     opacity: 0;
-    transform: scale(0.3) rotate(-90deg);
-    transition: opacity 700ms cubic-bezier(0.34, 1.7, 0.5, 1),
-                transform 700ms cubic-bezier(0.34, 1.7, 0.5, 1);
+    transform: translate3d(0, 8px, 0) scale(0.85);
+    transition: opacity 380ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
   }
   .feature-list[data-reveal][data-visible="true"] li .feat-icon {
     opacity: 1;
-    transform: scale(1) rotate(0);
+    transform: translate3d(0, 0, 0) scale(1);
   }
-  .feature-list[data-reveal][data-visible="true"] li:nth-child(1) .feat-icon { transition-delay: 150ms; }
-  .feature-list[data-reveal][data-visible="true"] li:nth-child(2) .feat-icon { transition-delay: 250ms; }
-  .feature-list[data-reveal][data-visible="true"] li:nth-child(3) .feat-icon { transition-delay: 350ms; }
-  .feature-list[data-reveal][data-visible="true"] li:nth-child(4) .feat-icon { transition-delay: 450ms; }
-  .feature-list[data-reveal][data-visible="true"] li:nth-child(5) .feat-icon { transition-delay: 550ms; }
-  .feature-list[data-reveal][data-visible="true"] li:nth-child(6) .feat-icon { transition-delay: 650ms; }
-  .feature-list[data-reveal][data-visible="true"] li:nth-child(7) .feat-icon { transition-delay: 750ms; }
-
-  /* Tambien para icon--reason (en bloques .reason de consultoria, BPO, etc.) */
-  .reveal .icon--reason,
-  .reason.reveal .icon--reason {
-    opacity: 0;
-    transform: scale(0.3) rotate(-90deg);
-    transition: opacity 700ms cubic-bezier(0.34, 1.7, 0.5, 1),
-                transform 700ms cubic-bezier(0.34, 1.7, 0.5, 1);
-    transition-delay: 200ms;
-  }
-  .reveal[data-visible="true"] .icon--reason,
-  .reason.reveal[data-visible="true"] .icon--reason {
-    opacity: 1;
-    transform: scale(1) rotate(0);
-  }
-
-  /* icon--block en service-card, nav-card, brochure-benefit */
-  .reveal.service-card .icon--block,
-  .reveal.nav-card .nav-card__icon,
-  .reveal.brochure-benefit .brochure-benefit__icon {
-    opacity: 0;
-    transform: scale(0.4) rotate(-45deg);
-    transition: opacity 600ms cubic-bezier(0.34, 1.7, 0.5, 1),
-                transform 600ms cubic-bezier(0.34, 1.7, 0.5, 1);
-    transition-delay: 150ms;
-  }
-  .reveal.service-card[data-visible="true"] .icon--block,
-  .reveal.nav-card[data-visible="true"] .nav-card__icon,
-  .reveal.brochure-benefit[data-visible="true"] .brochure-benefit__icon {
-    opacity: 1;
-    transform: scale(1) rotate(0);
-  }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(1) .feat-icon { transition-delay: 80ms; }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(2) .feat-icon { transition-delay: 140ms; }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(3) .feat-icon { transition-delay: 200ms; }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(4) .feat-icon { transition-delay: 260ms; }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(5) .feat-icon { transition-delay: 320ms; }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(6) .feat-icon { transition-delay: 380ms; }
 }
 
 /* Reduce motion (a11y) */
