@@ -4,312 +4,161 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light" />
-  <meta name="theme-color" content="#1a1a1a" />
+  <meta name="theme-color" content="#0B1F4D" />
   <title>Brochure · Facturación electrónica — TributaSoft</title>
-  <meta name="description" content="De RUC a primera factura en 5 minutos. Sin formularios largos, sin trámites manuales." />
+  <meta name="description" content="De RUC a primera factura en 5 minutos. Plataforma autorizada por el SRI, sin papeleo." />
 
   <link rel="icon" type="image/png" href="assets/img/logo.png" />
   <link rel="apple-touch-icon" href="assets/img/logo.png" />
 
-  <link rel="stylesheet" href="assets/css/tokens.css?v=20260520f" />
-  <link rel="stylesheet" href="assets/css/main.css?v=20260520f" />
+  <link rel="stylesheet" href="assets/css/tokens.css?v=20260520g" />
+  <link rel="stylesheet" href="assets/css/main.css?v=20260520g" />
 </head>
-<body>
+<body class="brochure-v2-body">
 
-  <header class="site-header" id="site-header">
-    <div class="container site-header__inner">
-      <a href="index.html" class="brand" aria-label="TributaSoft — Inicio">
-        <img src="assets/img/logo.png" alt="" class="brand__icon" width="40" height="40" />
-        <span class="brand__name">Tributa<span>Soft</span></span>
+  <article class="brochure-v2">
+
+    <!-- HEADER -->
+    <header class="brochure-v2__header">
+      <a href="index.html" class="brochure-v2__brand" aria-label="TributaSoft — Inicio">
+        <img src="assets/img/logo.png" alt="" />
+        <span class="brochure-v2__brand-name">Tributa<span class="soft">Soft</span></span>
+      </a>
+      <span class="brochure-v2__tagline">...todo bajo control</span>
+    </header>
+
+    <!-- CUERPO -->
+    <div class="brochure-v2__body">
+
+      <p class="brochure-v2__label">Brochure · Facturación electrónica</p>
+
+      <h1 class="brochure-v2__title">
+        Tu primera factura,<br/>en 5 minutos
+      </h1>
+
+      <p class="brochure-v2__intro">
+        Plataforma autorizada y conectada al SRI. Tu firma electrónica y
+        el certificado de RUC se procesan en tu computadora.
+        <span class="accent">Sin papeleo. Sin filas.</span>
+      </p>
+
+      <!-- 5 PASOS DEL FLUJO -->
+      <div class="brochure-v2__list">
+
+        <!-- 01 Identidad -->
+        <div class="brochure-v2__item">
+          <div class="brochure-v2__icon-wrap">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <circle cx="11" cy="19" r="5" stroke="#0B1F4D" stroke-width="1.6"/>
+              <path d="M14.5 15.5L25 5" stroke="#0B1F4D" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="22" y1="8" x2="26" y2="12" stroke="#F37021" stroke-width="2" stroke-linecap="round"/>
+              <line x1="20" y1="10" x2="23" y2="13" stroke="#F37021" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="brochure-v2__num">01</div>
+          <div class="brochure-v2__item-body">
+            <h3 class="brochure-v2__item-title">Identidad</h3>
+            <p class="brochure-v2__item-desc">Subes tu firma electrónica y el certificado de RUC. El sistema lee razón social, dirección y régimen automáticamente.</p>
+          </div>
+        </div>
+
+        <!-- 02 Tus datos -->
+        <div class="brochure-v2__item">
+          <div class="brochure-v2__icon-wrap">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect x="5" y="6" width="22" height="20" rx="2" stroke="#0B1F4D" stroke-width="1.6"/>
+              <line x1="5" y1="11" x2="27" y2="11" stroke="#0B1F4D" stroke-width="1.6"/>
+              <line x1="10" y1="16" x2="10" y2="16" stroke="#F37021" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="14" y1="16" x2="22" y2="16" stroke="#0B1F4D" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="10" y1="20" x2="10" y2="20" stroke="#F37021" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="14" y1="20" x2="20" y2="20" stroke="#0B1F4D" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="brochure-v2__num">02</div>
+          <div class="brochure-v2__item-body">
+            <h3 class="brochure-v2__item-title">Tus datos</h3>
+            <p class="brochure-v2__item-desc">Revisas los campos auto-completados desde el certificado. Confirmas o ajustas dirección, correo y celular.</p>
+          </div>
+        </div>
+
+        <!-- 03 Verificación -->
+        <div class="brochure-v2__item">
+          <div class="brochure-v2__icon-wrap">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect x="6" y="15" width="20" height="13" rx="2" stroke="#0B1F4D" stroke-width="1.6"/>
+              <path d="M10 15v-4a6 6 0 0 1 12 0v4" stroke="#0B1F4D" stroke-width="1.6"/>
+              <circle cx="16" cy="21" r="2" fill="#F37021"/>
+              <line x1="16" y1="23" x2="16" y2="25" stroke="#F37021" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="brochure-v2__num">03</div>
+          <div class="brochure-v2__item-body">
+            <h3 class="brochure-v2__item-title">Verificación por SMS y correo</h3>
+            <p class="brochure-v2__item-desc">Recibes 2 códigos de 4 dígitos: 1 por mensaje de texto y otro por correo. Los escribes y listo.</p>
+          </div>
+        </div>
+
+        <!-- 04 Datos tributarios -->
+        <div class="brochure-v2__item">
+          <div class="brochure-v2__icon-wrap">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <circle cx="16" cy="16" r="3.5" stroke="#0B1F4D" stroke-width="1.6"/>
+              <path d="M16 6v3M16 23v3M6 16h3M23 16h3M9 9l2 2M21 21l2 2M9 23l2-2M21 11l2-2" stroke="#0B1F4D" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="16" cy="16" r="1.4" fill="#F37021"/>
+            </svg>
+          </div>
+          <div class="brochure-v2__num">04</div>
+          <div class="brochure-v2__item-body">
+            <h3 class="brochure-v2__item-title">Datos tributarios y de facturación</h3>
+            <p class="brochure-v2__item-desc">Confirmas régimen (General o RIMPE), tipo de contribuyente y eliges si empiezas de cero o continúas tu numeración.</p>
+          </div>
+        </div>
+
+        <!-- 05 Clave, logo y listo -->
+        <div class="brochure-v2__item">
+          <div class="brochure-v2__icon-wrap">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <circle cx="16" cy="16" r="11" stroke="#0B1F4D" stroke-width="1.6"/>
+              <path d="M10 16l4 4 8-8" stroke="#F37021" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="brochure-v2__num">05</div>
+          <div class="brochure-v2__item-body">
+            <h3 class="brochure-v2__item-title">Clave, logo y a facturar</h3>
+            <p class="brochure-v2__item-desc">Creas tu clave, subes tu logo (o lo creamos por ti) y empiezas a facturar. Tus primeros 300 comprobantes son gratis.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA — WhatsApp con plantilla específica de facturación electrónica -->
+      <a href="https://wa.me/593969173466?text=Hola%20TributaSoft%2C%20me%20interesa%20una%20demo%20gratuita%20de%20Facturaci%C3%B3n%20Electr%C3%B3nica.%0A%0A-%20Empresa%3A%20%0A-%20RUC%3A%20%0A-%20Sector%20%2F%20actividad%3A%20%0A-%20Volumen%20mensual%20aproximado%20de%20facturas%3A%20%0A%0AGracias." target="_blank" rel="noopener" class="brochure-v2__cta" aria-label="Solicitar demo de facturación electrónica por WhatsApp">
+        <svg class="brochure-v2__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <circle cx="16" cy="16" r="2" fill="currentColor"/>
+        </svg>
+        <div class="brochure-v2__cta-text">
+          <div class="brochure-v2__cta-main">Solicita una demo gratuita</div>
+          <div class="brochure-v2__cta-sub">
+            WhatsApp: <strong>+593 96 917 3466</strong>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+            contabilidad@tributasoft.ec
+          </div>
+        </div>
       </a>
 
-      <nav class="site-nav" aria-label="Navegación principal">
-        <a href="servicios.html">Servicios</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="tutoriales.html">Tutoriales</a>
-        <a href="contacto.html">Contacto</a>
-      </nav>
-
-      <div class="header-actions">
-        <a href="https://tbc.tributasoft.ec/Erp-web/templates/registro/login.xhtml?faces-redirect=true" class="btn btn--ghost btn--icon-mobile" rel="noopener" aria-label="Iniciar sesión">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
-            <polyline points="10 17 15 12 10 7"/>
-            <line x1="15" y1="12" x2="3" y2="12"/>
-          </svg>
-          <span class="btn__label">Iniciar sesión</span>
-        </a>
-        <a href="https://llpereirae-svg.github.io/Ts/" class="btn btn--primary btn--icon-mobile" rel="noopener" aria-label="Empezar gratis">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4.5 16.5c-1.5 1.5-2 5-2 5s3.5-.5 5-2c.9-.9.9-2.4 0-3.3-.9-.9-2.4-.9-3.3 0z"/>
-            <path d="M11 13s5-1 8-4 5-7 5-7-4 2-7 5-4 6-6 6"/>
-            <path d="M16 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
-          </svg>
-          <span class="btn__label">Empezar gratis</span>
-        </a>
-      </div>
     </div>
-  </header>
 
-  <main>
+    <!-- FOOTER del brochure -->
+    <footer class="brochure-v2__footer">
+      <span>Brochure - Facturación electrónica</span>
+      <span>Página 1 de 1</span>
+    </footer>
 
-    <!-- HERO BROCHURE -->
-    <section class="brochure-hero">
-      <div class="container container--narrow">
-        <span class="eyebrow eyebrow-line">Brochure · Facturación electrónica</span>
-        <h1 class="brochure-hero__title">
-          De RUC a primera factura,<br/>en <em class="italic">5 minutos</em>.
-        </h1>
-        <p class="brochure-hero__lead">
-          5 pasos para crear tu cuenta y emitir tu primera factura electrónica
-          autorizada por el SRI. Sin formularios largos. Sin escribir datos a mano.
-        </p>
-        <div class="brochure-hero__actions">
-          <button type="button" onclick="generateBrochurePDF()" class="btn btn--ghost btn--lg">
-            Descargar PDF
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-          </button>
-          <a href="https://llpereirae-svg.github.io/Ts/" class="btn btn--primary btn--lg" rel="noopener">
-            Empezar aquí
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </a>
-          <a href="tutoriales.html" class="link-arrow">
-            Ver tutoriales en video
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
+  </article>
 
-    <!-- 5 PASOS (resumen del flujo de registro) -->
-    <section class="section section--bg">
-      <div class="container container--narrow">
-        <header style="margin-bottom: var(--ts-space-12);">
-          <span class="eyebrow eyebrow-line">El flujo</span>
-          <h2 style="margin-top: var(--ts-space-4);">
-            5 pasos,<br/>cero <em class="italic">letra chica</em>.
-          </h2>
-        </header>
-
-        <ol class="brochure-steps" aria-label="Flujo de registro">
-
-          <li class="brochure-step">
-            <span class="brochure-step__num">01</span>
-            <div class="brochure-step__body">
-              <svg class="brochure-step__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="8" cy="15" r="4"/>
-                <path d="M10.8 12.2L20 3"/>
-                <path d="M17 6l3 3"/>
-                <path d="M15 8l3 3"/>
-              </svg>
-              <h3 class="brochure-step__title">Identidad</h3>
-              <p class="brochure-step__lead">
-                Subes tu firma electrónica y el certificado de RUC en PDF.
-                El sistema lee automáticamente razón social, dirección, régimen
-                y tipo de contribuyente — directamente del certificado oficial
-                del SRI.
-              </p>
-              <p class="brochure-step__note">
-                <strong>Tus archivos quedan en tu computadora.</strong>
-                Nunca los enviamos a ningún servidor.
-              </p>
-            </div>
-          </li>
-
-          <li class="brochure-step">
-            <span class="brochure-step__num">02</span>
-            <div class="brochure-step__body">
-              <svg class="brochure-step__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="14" rx="2"/>
-                <path d="M3 9h18"/>
-                <line x1="7" y1="13" x2="7" y2="13.1"/>
-                <line x1="11" y1="13" x2="17" y2="13"/>
-                <line x1="7" y1="16" x2="7" y2="16.1"/>
-                <line x1="11" y1="16" x2="15" y2="16"/>
-              </svg>
-              <h3 class="brochure-step__title">Tus datos</h3>
-              <p class="brochure-step__lead">
-                Revisas los campos que el sistema completó por ti
-                (razón social, provincia, ciudad). Confirmas o cambias:
-                dirección, correo y celular. Si no tienes nombre comercial,
-                marcas "No aplica" y listo.
-              </p>
-            </div>
-          </li>
-
-          <li class="brochure-step">
-            <span class="brochure-step__num">03</span>
-            <div class="brochure-step__body">
-              <svg class="brochure-step__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="11" width="18" height="11" rx="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                <circle cx="12" cy="16.5" r="1.5"/>
-              </svg>
-              <h3 class="brochure-step__title">Verificación por SMS y correo</h3>
-              <p class="brochure-step__lead">
-                Recibes 2 códigos de 4 dígitos: 1 por mensaje de texto y
-                otro por correo electrónico. Los escribes y listo. No necesitas
-                instalar nada extra ni escanear códigos.
-              </p>
-              <p class="brochure-step__note">
-                <strong>Verificación rápida:</strong> menos de un minuto.
-              </p>
-            </div>
-          </li>
-
-          <li class="brochure-step">
-            <span class="brochure-step__num">04</span>
-            <div class="brochure-step__body">
-              <svg class="brochure-step__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.36.16.65.41.85.74L21 9a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-              </svg>
-              <h3 class="brochure-step__title">Datos tributarios y de facturación</h3>
-              <p class="brochure-step__lead">
-                Confirmas tu régimen (General o RIMPE), el tipo de contribuyente
-                y, si lo necesitas, tu número de resolución. También eliges si
-                comienzas desde cero o continúas con la numeración que ya tenías
-                en otra plataforma.
-              </p>
-            </div>
-          </li>
-
-          <li class="brochure-step">
-            <span class="brochure-step__num">05</span>
-            <div class="brochure-step__body">
-              <svg class="brochure-step__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="20 6 9 17 4 12"/>
-              </svg>
-              <h3 class="brochure-step__title">Clave, logo y listo</h3>
-              <p class="brochure-step__lead">
-                Creas tu clave (te indicamos qué tan segura es), subes tu logo
-                (o lo creamos con tu nombre comercial) y revisas un resumen final.
-                Recibirás un correo con tus datos de acceso y ya puedes comenzar
-                a emitir facturas.
-              </p>
-              <p class="brochure-step__note">
-                <strong>Regalo de bienvenida:</strong> tus primeros 300 comprobantes
-                son gratis.
-              </p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- BENEFICIOS -->
-    <section class="section">
-      <div class="container container--narrow">
-        <header style="margin-bottom: var(--ts-space-12);">
-          <span class="eyebrow eyebrow-line">Por qué nuestro registro es distinto</span>
-          <h2 style="margin-top: var(--ts-space-4);">
-            Sin filas en el SRI.<br/>Sin <em class="italic">papeleo</em>.
-          </h2>
-        </header>
-
-        <ul class="brochure-benefits">
-          <li class="brochure-benefit">
-            <svg class="brochure-benefit__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <polyline points="9 12 11 14 15 10"/>
-            </svg>
-            <h3>Tus archivos no se suben a internet</h3>
-            <p>Tu firma electrónica y el certificado de RUC se leen en tu computadora. Nunca salen de ahí.</p>
-          </li>
-          <li class="brochure-benefit">
-            <svg class="brochure-benefit__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>
-            <h3>Registro en 5 minutos</h3>
-            <p>Del primer clic a tu primera factura emitida. Sin pasos manuales en el medio.</p>
-          </li>
-          <li class="brochure-benefit">
-            <svg class="brochure-benefit__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
-              <line x1="7" y1="7" x2="7.01" y2="7"/>
-            </svg>
-            <h3>300 comprobantes gratis</h3>
-            <p>O 3 meses de uso, lo que ocurra primero. Sin tarjeta de crédito al inicio.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CTA FINAL -->
-    <section class="cta-editorial">
-      <div class="container container--narrow">
-        <span class="eyebrow eyebrow-line">Empieza hoy</span>
-        <h2 class="cta-editorial__title" style="margin-top: var(--ts-space-4);">
-          Tu primera factura,<br/>en <em class="italic">minutos</em>.
-        </h2>
-        <p class="cta-editorial__lead">
-          Sin tarjeta de crédito. Sin contratos. Las primeras 300 facturas son
-          cortesía nuestra.
-        </p>
-        <div class="cta-editorial__actions">
-          <a href="https://llpereirae-svg.github.io/Ts/" class="btn btn--primary btn--lg" rel="noopener">Empezar gratis</a>
-          <a href="https://wa.me/593969173466?text=Hola%2C%20necesito%20ayuda%20con%20%5BDescriba%20brevemente%20el%20problema%5D." target="_blank" rel="noopener" class="btn btn--ghost btn--lg">Hablar por WhatsApp</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="site-footer__bottom">
-        <p>© <span id="footer-year">2026</span> TributaSoft S.A. — Todos los derechos reservados · Ecuador</p>
-        <ul style="list-style:none; padding:0; margin:0; display:flex; gap:1.5rem; font-size:0.875rem;">
-          <li><a href="terminos-de-servicio.html">Términos</a></li>
-          <li><a href="politica-de-privacidad.html">Privacidad</a></li>
-          <li><a href="politica-de-cookies.html">Cookies</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
-
-  <a class="fab-whatsapp" href="https://wa.me/593969173466?text=Hola%2C%20necesito%20ayuda%20con%20%5BDescriba%20brevemente%20el%20problema%5D." target="_blank" rel="noopener" aria-label="Soporte por WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2c-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.5s1 2.8 1.2 3c.1.2 2 3.1 4.8 4.3 1.5.7 2.2.8 3 .7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
-    </svg>
-  </a>
-
-  <script>
-    window.BROCHURE_DATA = {
-      docName: "Brochure - Facturacion Electronica",
-      eyebrow: "Brochure · Facturacion electronica",
-      title: "De RUC a primera factura, en 5 minutos.",
-      lead: "5 pasos para crear tu cuenta y emitir tu primera factura electronica autorizada por el SRI. Sin formularios largos. Sin escribir datos a mano.",
-      steps: [
-        { num: "01", title: "Identidad",
-          lead: "Subes tu firma electronica y el certificado de RUC en PDF. El sistema lee automaticamente razon social, direccion, regimen y tipo de contribuyente." },
-        { num: "02", title: "Tus datos",
-          lead: "Revisas los campos auto-completados. Confirmas o cambias direccion, correo y celular. Si no hay nombre comercial, marcas 'No aplica'." },
-        { num: "03", title: "Verificacion por SMS y correo",
-          lead: "Recibes 2 codigos de 4 digitos: uno por mensaje y otro por correo. Los escribes y listo. Sin apps externas, sin codigos QR." },
-        { num: "04", title: "Datos tributarios y de facturacion",
-          lead: "Confirmas tu regimen (General o RIMPE), tipo de contribuyente y, si aplica, numero de resolucion. Comienzas desde cero o continuas tu numeracion previa." },
-        { num: "05", title: "Clave, logo y listo",
-          lead: "Creas tu clave, subes tu logo (o lo creamos con tu nombre comercial) y revisas el resumen. Recibes un correo con tus datos de acceso." },
-      ],
-      cta: {
-        title: "300 comprobantes electronicos gratis",
-        subtitle: "Sin tarjeta de credito. Sin contratos. Empieza hoy: llpereirae-svg.github.io/Ts/",
-      },
-    };
-  </script>
-  <script src="assets/js/pdf-brochure.js" defer></script>
-  <script src="assets/js/main.js?v=20260520f" defer></script>
 </body>
 </html>
