@@ -1792,6 +1792,137 @@ body.flow-modal-open { overflow: hidden; }
 }
 
 /* ============================================================
+   INCLUDES + BENEFITS — grid 2 columnas (servicio-facturacion)
+   Mobile: stack. Tablet/desktop: 2 columnas con divisor central.
+   ============================================================ */
+.inc-ben {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ts-space-10);
+}
+@media (min-width: 768px) {
+  .inc-ben {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--ts-space-16);
+    position: relative;
+  }
+  /* Linea vertical divisora centrada */
+  .inc-ben::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: var(--ts-border);
+  }
+}
+
+.inc-ben__col {}
+.inc-ben__col-head {
+  margin-bottom: var(--ts-space-6);
+}
+.inc-ben__col-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ts-space-2);
+  font-family: var(--ts-font-body);
+  font-size: var(--ts-text-xs);
+  font-weight: 600;
+  letter-spacing: var(--ts-tracking-wider);
+  text-transform: uppercase;
+  color: var(--ts-orange-deep);
+  margin-bottom: var(--ts-space-3);
+}
+.inc-ben__col-eyebrow::before {
+  content: "";
+  width: 1.5rem;
+  height: 2px;
+  background: var(--ts-orange);
+}
+.inc-ben__col-title {
+  font-family: var(--ts-font-display);
+  font-size: var(--ts-text-h3);
+  font-weight: 500;
+  letter-spacing: var(--ts-tracking-tight);
+  color: var(--ts-ink);
+  line-height: var(--ts-leading-snug);
+}
+
+.inc-ben__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.inc-ben__item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: var(--ts-space-4);
+  padding: var(--ts-space-5) 0;
+  border-top: 1px solid var(--ts-border);
+  align-items: start;
+  transition: padding-left 220ms ease, background 220ms ease;
+}
+.inc-ben__item:last-child { border-bottom: 1px solid var(--ts-border); }
+.inc-ben__item:hover {
+  padding-left: var(--ts-space-2);
+  background: rgba(253, 118, 26, 0.04);
+}
+
+.inc-ben__icon-wrap {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(253, 118, 26, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.inc-ben__item:hover .inc-ben__icon-wrap {
+  transform: scale(1.1) rotate(-5deg);
+}
+.inc-ben__icon-wrap svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--ts-orange);
+}
+
+.inc-ben__item-title {
+  font-family: var(--ts-font-display);
+  font-size: var(--ts-text-md);
+  font-weight: 600;
+  color: var(--ts-ink);
+  margin-bottom: var(--ts-space-1);
+  line-height: var(--ts-leading-snug);
+}
+.inc-ben__item-desc {
+  font-size: var(--ts-text-sm);
+  color: var(--ts-text-muted);
+  line-height: var(--ts-leading-relaxed);
+  margin: 0;
+}
+
+/* Animaciones scroll para PC */
+@media (hover: hover) and (pointer: fine) {
+  .reveal .inc-ben__icon-wrap {
+    opacity: 0;
+    transform: scale(0.4) rotate(-45deg);
+    transition: opacity 600ms cubic-bezier(0.34, 1.7, 0.5, 1),
+                transform 600ms cubic-bezier(0.34, 1.7, 0.5, 1);
+  }
+  .reveal[data-visible="true"] .inc-ben__icon-wrap {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+  .reveal[data-visible="true"] .inc-ben__item:nth-child(1) .inc-ben__icon-wrap { transition-delay: 100ms; }
+  .reveal[data-visible="true"] .inc-ben__item:nth-child(2) .inc-ben__icon-wrap { transition-delay: 200ms; }
+  .reveal[data-visible="true"] .inc-ben__item:nth-child(3) .inc-ben__icon-wrap { transition-delay: 300ms; }
+  .reveal[data-visible="true"] .inc-ben__item:nth-child(4) .inc-ben__icon-wrap { transition-delay: 400ms; }
+  .reveal[data-visible="true"] .inc-ben__item:nth-child(5) .inc-ben__icon-wrap { transition-delay: 500ms; }
+}
+
+/* ============================================================
    BROCHURE V2 — single-page A4 corporate (urbanizaciones / facturacion)
    Estilo limpio, profesional, una sola pagina vertical.
    ============================================================ */
