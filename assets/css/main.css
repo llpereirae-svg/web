@@ -1508,18 +1508,73 @@ body.flow-modal-open { overflow: hidden; }
 /* Animacion especial para feature-list children con stagger automatico */
 .feature-list[data-reveal] li {
   opacity: 0;
-  transform: translateX(-20px);
-  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-32px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .feature-list[data-reveal][data-visible="true"] li { opacity: 1; transform: translateX(0); }
 .feature-list[data-reveal][data-visible="true"] li:nth-child(1) { transition-delay: 0ms; }
-.feature-list[data-reveal][data-visible="true"] li:nth-child(2) { transition-delay: 80ms; }
-.feature-list[data-reveal][data-visible="true"] li:nth-child(3) { transition-delay: 160ms; }
-.feature-list[data-reveal][data-visible="true"] li:nth-child(4) { transition-delay: 240ms; }
-.feature-list[data-reveal][data-visible="true"] li:nth-child(5) { transition-delay: 320ms; }
-.feature-list[data-reveal][data-visible="true"] li:nth-child(6) { transition-delay: 400ms; }
-.feature-list[data-reveal][data-visible="true"] li:nth-child(7) { transition-delay: 480ms; }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(2) { transition-delay: 100ms; }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(3) { transition-delay: 200ms; }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(4) { transition-delay: 300ms; }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(5) { transition-delay: 400ms; }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(6) { transition-delay: 500ms; }
+.feature-list[data-reveal][data-visible="true"] li:nth-child(7) { transition-delay: 600ms; }
+
+/* ===== ANIMACION DEDICADA AL ICONO (entrada con pop + rotacion) =====
+   Solo en hover-capable (PC). El icono mismo tiene su propia entrada al
+   scroll independiente del padre <li>, mas dramatica y visible. */
+@media (hover: hover) and (pointer: fine) {
+  .feature-list[data-reveal] li .feat-icon {
+    opacity: 0;
+    transform: scale(0.3) rotate(-90deg);
+    transition: opacity 700ms cubic-bezier(0.34, 1.7, 0.5, 1),
+                transform 700ms cubic-bezier(0.34, 1.7, 0.5, 1);
+  }
+  .feature-list[data-reveal][data-visible="true"] li .feat-icon {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(1) .feat-icon { transition-delay: 150ms; }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(2) .feat-icon { transition-delay: 250ms; }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(3) .feat-icon { transition-delay: 350ms; }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(4) .feat-icon { transition-delay: 450ms; }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(5) .feat-icon { transition-delay: 550ms; }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(6) .feat-icon { transition-delay: 650ms; }
+  .feature-list[data-reveal][data-visible="true"] li:nth-child(7) .feat-icon { transition-delay: 750ms; }
+
+  /* Tambien para icon--reason (en bloques .reason de consultoria, BPO, etc.) */
+  .reveal .icon--reason,
+  .reason.reveal .icon--reason {
+    opacity: 0;
+    transform: scale(0.3) rotate(-90deg);
+    transition: opacity 700ms cubic-bezier(0.34, 1.7, 0.5, 1),
+                transform 700ms cubic-bezier(0.34, 1.7, 0.5, 1);
+    transition-delay: 200ms;
+  }
+  .reveal[data-visible="true"] .icon--reason,
+  .reason.reveal[data-visible="true"] .icon--reason {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+
+  /* icon--block en service-card, nav-card, brochure-benefit */
+  .reveal.service-card .icon--block,
+  .reveal.nav-card .nav-card__icon,
+  .reveal.brochure-benefit .brochure-benefit__icon {
+    opacity: 0;
+    transform: scale(0.4) rotate(-45deg);
+    transition: opacity 600ms cubic-bezier(0.34, 1.7, 0.5, 1),
+                transform 600ms cubic-bezier(0.34, 1.7, 0.5, 1);
+    transition-delay: 150ms;
+  }
+  .reveal.service-card[data-visible="true"] .icon--block,
+  .reveal.nav-card[data-visible="true"] .nav-card__icon,
+  .reveal.brochure-benefit[data-visible="true"] .brochure-benefit__icon {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
 
 /* Reduce motion (a11y) */
 @media (prefers-reduced-motion: reduce) {

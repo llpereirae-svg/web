@@ -166,16 +166,12 @@
             entry.target.setAttribute('data-visible', 'true');
             entry.target.setAttribute('data-scroll-dir', scrollDir);
           } else {
-            // Solo resetear si esta MUY fuera (no en el limite) para no parpadear
-            const rect = entry.boundingClientRect;
-            const vh = window.innerHeight;
-            if (rect.top > vh + 100 || rect.bottom < -100) {
-              entry.target.setAttribute('data-visible', 'false');
-            }
+            // Reset siempre que salga del viewport -> reanimacion al volver
+            entry.target.setAttribute('data-visible', 'false');
           }
         });
       },
-      { threshold: [0, 0.15, 0.5], rootMargin: '0px 0px -8% 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -12% 0px' }
     );
     revealEls.forEach((el) => io.observe(el));
   } else {
