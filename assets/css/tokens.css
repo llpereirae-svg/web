@@ -5,7 +5,29 @@
    Body: Inter.
    ============================================================ */
 
-/* ---------- @font-face (auto-host) ---------- */
+/* ---------- @font-face (auto-host) ----------
+   PLAYFAIR DISPLAY — reemplaza a Fraunces.
+   Misma vibra editorial pero glyphs mas conservadores (la 'r' y 'f'
+   se ven correctas en todas las plataformas).
+   Variable font: 2 archivos cubren weights 400-900 + italic. */
+@font-face {
+  font-family: 'PlayfairDisplay';
+  src: url('../fonts/PlayfairDisplay-VAR.woff2') format('woff2-variations'),
+       url('../fonts/PlayfairDisplay-VAR.woff2') format('woff2');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PlayfairDisplay';
+  src: url('../fonts/PlayfairDisplay-Italic-VAR.woff2') format('woff2-variations'),
+       url('../fonts/PlayfairDisplay-Italic-VAR.woff2') format('woff2');
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Fraunces queda como fallback historico (no usado por defecto) */
 @font-face {
   font-family: 'Fraunces';
   src: url('../fonts/Fraunces-Regular.woff2') format('woff2');
@@ -115,7 +137,7 @@
   --ts-error:          #ba1a1a;
 
   /* === Typography === */
-  --ts-font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --ts-font-display: 'PlayfairDisplay', 'Fraunces', Georgia, 'Times New Roman', serif;
   --ts-font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --ts-font-mono:    ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, monospace;
 

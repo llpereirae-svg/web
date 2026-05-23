@@ -272,7 +272,9 @@ p  { line-height: var(--ts-leading-relaxed); color: var(--ts-text-muted); max-wi
 .brand { flex-wrap: nowrap !important; min-width: 0; }
 .brand__name { flex-wrap: nowrap; }
 
-/* === Sin ligaduras raras (fix "diferencia" deformada por Fraunces) === */
+/* === Sin ligaduras ni alternates raras (fix glyph distortion) ===
+   Disable agresivo de TODAS las OpenType features que pueden hacer
+   que letras como 'r' y 'f' se vean deformes en algunas plataformas. */
 h1, h2, h3, h4,
 .cover-hero__title,
 .brochure-hero__title,
@@ -283,9 +285,17 @@ h1, h2, h3, h4,
 .reason__title,
 .service-card__title,
 .nav-card__title,
-.legal-article__title {
-  font-variant-ligatures: no-discretionary-ligatures;
-  font-feature-settings: "calt" 0, "dlig" 0;
+.legal-article__title,
+.brochure-v2__title,
+.brochure-v2__item-title {
+  font-variant-ligatures: none;
+  font-feature-settings:
+    "liga" 0, "clig" 0, "calt" 0, "dlig" 0, "hlig" 0,
+    "salt" 0, "swsh" 0, "cswh" 0,
+    "ss01" 0, "ss02" 0, "ss03" 0, "ss04" 0, "ss05" 0,
+    "ss06" 0, "ss07" 0, "ss08" 0, "ss09" 0, "ss10" 0,
+    "ss11" 0, "ss12" 0, "ss13" 0, "ss14" 0, "ss15" 0,
+    "ss16" 0, "ss17" 0, "ss18" 0;
 }
 /* Brand en footer — ligeramente mas chico */
 .site-footer .brand__name { font-size: 1.5rem; }
