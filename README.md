@@ -1,188 +1,214 @@
-# TributaSoft — Homepage (rediseño 2026)
+# TributaSoft — Sitio web
 
-Homepage estática para `tributasoft.com.ec`, construida con **HTML5 + CSS3 + JS vanilla**.
-Sin librerías, sin bundlers, sin frameworks. Funciona abriendo `index.html` desde un
-servidor estático.
+Sitio institucional de TributaSoft S.A. (Ecuador), construido con **HTML5 + CSS3 + JS vanilla**.
+Sin librerías, sin bundlers, sin build step. Se sirve estáticamente.
 
-> Diseño basado en `tributasoft_core/DESIGN.md` (paleta navy + naranja del logo).
-> Estructura inspirada en el mockup oficial `_stitch_ref/landing_page_updated_branding`.
+**Producción:** https://llpereirae-svg.github.io/web/
+**Repo:** https://github.com/llpereirae-svg/web
 
 ---
 
 ## Cómo correrlo localmente
 
+Pre-requisito: **Python**, **Node** o cualquier servidor HTTP estático.
+
 ```powershell
+# Clonar (solo la primera vez)
+git clone https://github.com/llpereirae-svg/web.git tributasoft-home
 cd tributasoft-home
 
-# Opción 1 — Python
+# Levantar servidor — Opción 1: Python
 python -m http.server 8080
 
-# Opción 2 — Node
+# Levantar servidor — Opción 2: Node
 npx serve . -l 8080
+
+# Levantar servidor — Opción 3: VS Code
+# Instalar la extensión "Live Server" → click derecho en index.html → "Open with Live Server"
 ```
 
-Abre <http://localhost:8080>. No requiere build.
+Abrir <http://localhost:8080> en el navegador. Listo.
+
+### Editar y ver cambios
+
+1. Editar cualquier `.html`, `.css` o `.js`.
+2. **Ctrl + Shift + R** en el navegador para forzar recarga sin caché.
+3. Deploy a producción: `git add -A && git commit -m "..." && git push` → GitHub Pages publica en 1–2 minutos.
 
 ---
 
-## Estructura
+## Estructura del proyecto
 
 ```
 tributasoft-home/
-├── index.html                  Estructura semántica (~12 KB)
+├── index.html                    Landing principal
+├── servicios.html                Hub de 6 servicios (cards)
+│
+├── servicio-facturacion.html       1) Facturación electrónica
+├── bpo-viaticos.html               2) Gastos de Viaje
+├── bpo-ats.html                    3) ATS
+├── bpo-facturacion-masiva.html     4) Facturación Electrónica Automática
+├── bpo-integraciones-erp.html      5) Integraciones a otros ERP
+├── servicio-urbanizaciones.html    6) Urbanizaciones
+│
+├── nosotros.html
+├── contacto.html
+├── tutoriales.html
+├── politica-de-privacidad.html
+├── politica-de-cookies.html
+├── terminos-de-servicio.html
+│
 ├── README.md
+├── .gitignore
+│
 └── assets/
     ├── css/
-    │   ├── tokens.css          Variables del design system (colores, tipo, espacios)
-    │   └── main.css            Layout responsive + componentes
+    │   ├── tokens.css            Variables del design system
+    │   └── main.css              Layout + componentes
     ├── js/
-    │   └── main.js             Mobile menu, smooth scroll, reveal on scroll, validación RUC
+    │   └── main.js               Mobile drawer, smooth scroll, reveal on scroll
     ├── img/
-    │   ├── logo.svg            Logo isotipo (foco, 1.2 KB)
-    │   └── logo.png            Logo fallback (281 KB)
-    └── fonts/                  Auto-host (no Google Fonts CDN)
-        ├── DMSans-Regular.woff2
-        ├── DMSans-SemiBold.woff2
-        ├── DMSans-Bold.woff2
-        ├── Inter-Regular.woff2
-        ├── Inter-Medium.woff2
-        ├── Inter-SemiBold.woff2
-        └── Inter-Bold.woff2
+    │   ├── logo.png
+    │   └── logo.svg
+    └── fonts/
+        ├── PlayfairDisplay-VAR.woff2          Display (con tildes y ñ)
+        ├── PlayfairDisplay-Italic-VAR.woff2
+        └── (fallbacks: Fraunces, Inter, DM Sans)
 ```
 
-**Tamaño total del sitio:** ~180 KB (todo incluido — HTML + CSS + JS + fuentes + logos).
+Existen también algunos archivos `.html` legacy (`bpo-inventarios`, `bpo-rol-pagos`, `servicio-bpo`, `servicio-consultoria`, `servicio-desarrollo`, `brochure-*`) que **ya no están enlazados desde el menú principal**. Se mantienen en el repo por compatibilidad con URLs viejas; pueden eliminarse cuando se quiera.
 
 ---
 
-## Design System aplicado
+## Los 6 servicios activos
 
-Tokens en `assets/css/tokens.css`:
+Toda la navegación entra por `servicios.html`, que es el hub. Cada card lleva a su página de detalle:
 
-| Token | Valor | Uso |
-|---|---|---|
-| `--ts-navy` | `#1e3a8a` | Headlines, links, navegación |
-| `--ts-orange` | `#fd761a` | CTA primario (color del logo) |
-| `--ts-teal` | `#3cddc7` | Accents, iconos (color del logo) |
-| `--ts-bg` | `#f9f9f9` | Fondo global off-white |
-| `--ts-surface` | `#ffffff` | Cards, formularios |
-
-- **Tipografía:** DM Sans (display) + Inter (body), auto-host
-- **Espaciado:** escala 8px (4, 8, 12, 16, 24, 32, 48, 64, 80, 96)
-- **Radius:** 12px botones/inputs · 16px inputs grandes · 24px cards
-- **Sombras:** tinted con navy `rgba(30, 58, 138, 0.08)`
+| # | Servicio | Archivo | Foco |
+|---|---|---|---|
+| 1 | Facturación electrónica | `servicio-facturacion.html` | Plataforma autorizada SRI, columnas Funciones + Beneficios |
+| 2 | Gastos de Viaje | `bpo-viaticos.html` | Cupos por vendedor y categoría, docs físicos + electrónicos |
+| 3 | ATS | `bpo-ats.html` | Generación del XML del Anexo Transaccional Simplificado |
+| 4 | Facturación Electrónica Automática | `bpo-facturacion-masiva.html` | Facturación masiva por plantilla de clientes |
+| 5 | Integraciones a otros ERP | `bpo-integraciones-erp.html` | Control de retenciones recibidas + transmisión al SRI |
+| 6 | Urbanizaciones | `servicio-urbanizaciones.html` | Alícuotas, cobros, morosidad |
 
 ---
 
-## Secciones de la homepage
+## Datos de contacto (centralizados)
 
-1. **Header sticky** — logo · nav · Login · CTA "Empezar gratis"
-2. **Hero** — pill "Nuevo cliente · 300 gratis" + headline "Empieza a facturar electrónicamente en *2 minutos*" + trust badges + **formulario de captura de RUC** (lado derecho)
-3. **3 pasos** — "Facturar nunca fue tan fácil"
-4. **Vertical: Urbanizaciones** — alícuotas, cobros, reportes
-5. **Vertical: BPO Contable** — nómina, ATS, viáticos, pagos automáticos
-6. **Testimonio** — Andrea Salazar (placeholder, reemplazable)
-7. **CTA final** — "Empezar gratis" + "Hablar por WhatsApp"
-8. **Footer** — 4 columnas (Producto · Contacto · Legal · Redes)
-9. **FAB WhatsApp** — botón flotante esquina inferior derecha
+Si cambian, hay que actualizarlos en todos los HTML que los usan (principalmente `contacto.html`, `index.html`, y los enlaces WhatsApp de cada servicio).
 
----
-
-## ⚠️ Placeholders a reemplazar antes de publicar
-
-Busca y reemplaza estos tokens en `index.html`:
-
-| Placeholder | Reemplazar con |
+| Dato | Valor actual |
 |---|---|
-| `{PENDIENTE-TELEFONO}` | Teléfono comercial (formato `+593 X XXX XXXX`) |
-| `{PENDIENTE-WHATSAPP}` | Número WhatsApp **sin `+` ni espacios** (ej: `593999999999`) |
-| `{PENDIENTE-EMAIL}` | Email general (ej: `info@tributasoft.com.ec`) |
-| `{PENDIENTE-EMAIL-SOPORTE}` | Email de soporte (ej: `soporte@tributasoft.com.ec`) |
-| `{PENDIENTE-DIRECCION}` | Dirección física (ej: `Av. 6 de Diciembre N32-50, Quito`) |
+| Horario | Lun–Vie · 08:30–17:00 |
+| Dirección | Daule, Urb. Villas del Rey, Etapa Princesa Diana, Ecuador |
+| Google Maps | https://maps.app.goo.gl/pLGTSvi3JHrjRAYZ9 |
+| Teléfono primario | +593 99 634 5284 |
+| Teléfono secundario | +593 99 842 9901 |
+| Email comercial | tributasoftsa@gmail.com |
+| Email soporte técnico | soporte@tributasoft.ec |
 
-Búsqueda rápida en PowerShell:
+### WhatsApp links
+
+Todos los enlaces "Solicitar propuesta" de los 5 servicios BPO/Integraciones siguen el mismo formato URL-encoded:
+
+```
+https://wa.me/593996345284?text=<mensaje URL-encoded>
+```
+
+El mensaje incluye campos: **Razón social**, **RUC**, datos específicos del servicio, **Fecha y hora preferida para reunión virtual (demo)**, y la nota `[Recuerde que nuestro horario de atención personalizada y humana es de 08:30-17:00]`.
+
+---
+
+## Design System
+
+Tokens en `assets/css/tokens.css`. Se usan en `main.css` vía `var(--ts-*)`.
+
+- **Tipografía display:** Playfair Display (variable font, woff2 auto-host con soporte de tildes y ñ).
+  Fallback: Fraunces, Georgia, Times New Roman, serif.
+- **Tipografía body:** Inter.
+- **Color principal:** navy/azul oscuro. Naranja y teal del logo como acentos.
+- **Espaciado:** escala de 8 px (`--ts-space-1` a `--ts-space-12`).
+- **Radius / sombras:** definidos como tokens `--ts-radius-*` y `--ts-shadow-*`.
+
+Para cambiar la identidad visual, editar solamente `tokens.css`.
+
+---
+
+## Comportamientos JS (assets/js/main.js)
+
+- **Header sticky** que cambia opacidad al hacer scroll.
+- **Mobile drawer** lateral en pantallas pequeñas (toggle por botón hamburguesa, cierre con backdrop o Escape).
+- **Smooth scroll** para anchors internos respetando `prefers-reduced-motion`.
+- **Reveal on scroll** vía `IntersectionObserver` para animaciones sutiles.
+- **Auto-año en footer** (`#footer-year`).
+
+---
+
+## Cache busting
+
+Cada release sube la versión en la query string de los assets:
+
+```html
+<link rel="stylesheet" href="assets/css/tokens.css?v=20260520n" />
+<link rel="stylesheet" href="assets/css/main.css?v=20260520n" />
+<script src="assets/js/main.js?v=20260520n" defer></script>
+```
+
+**Versión actual:** `v=20260520n`. Cuando edites CSS/JS, sube la letra final (`n` → `o` → `p`...) en **todos** los HTML para invalidar el caché del navegador del visitante.
+
+Bump rápido en PowerShell:
 
 ```powershell
-Select-String -Path index.html -Pattern '\{PENDIENTE-'
+Get-ChildItem *.html | ForEach-Object {
+  (Get-Content $_.FullName) -replace 'v=20260520n','v=20260520o' | Set-Content $_.FullName
+}
+```
+
+O en bash/git-bash:
+
+```bash
+sed -i 's|v=20260520n|v=20260520o|g' *.html
 ```
 
 ---
 
-## Comportamientos JS
+## Convenciones de escritura
 
-`assets/js/main.js` implementa:
-
-- **Header sticky inteligente** — agrega borde y fondo opaco al hacer scroll
-- **Mobile drawer** — menú lateral en pantallas `< 900px`, con focus trap básico, cierra con Escape o click en backdrop
-- **Smooth scroll** — anchors internos con offset del header sticky, respeta `prefers-reduced-motion`
-- **Reveal on scroll** — animación sutil al entrar viewport vía `IntersectionObserver`
-- **Validación RUC ligera** — 13 dígitos, código de provincia (01-24, 30), establecimiento ≥ 001. La validación profunda (dígito verificador módulo 10/11) corre en el portal de registro existente
-- **Auto-año en footer** — JS pone el año actual
+- **Español neutro ecuatoriano.** Evitar regionalismos argentinos, colombianos, mexicanos o peruanos.
+- **Tercera persona del singular** al describir los servicios — TributaSoft desarrolla el módulo, no presta el servicio. Ejemplo correcto: *"El módulo detecta inconsistencias"*. Ejemplo incorrecto: *"Detectamos inconsistencias"*.
+- **Segunda persona ("tú")** sí está permitida cuando el sitio se dirige al lector ("Tu primera factura, en minutos").
+- **Tildes y ñ** siempre escritas correctamente (la fuente las renderiza bien).
 
 ---
 
-## Responsive — Breakpoints
+## Hosting y deploy
 
-- **Móvil:** `< 640px` — stack vertical, drawer lateral, padding 16px
-- **Tablet:** `640–1024px` — grid 2 col en algunas secciones, padding 24px
-- **Desktop:** `≥ 1024px` — grid completo, padding 40px, container 1280px máx
+- **Hosting:** GitHub Pages, sirviendo desde la rama `main`, carpeta raíz.
+- **Deploy:** automático al hacer `git push` a `main`. Tarda 1–2 min.
+- **URL:** https://llpereirae-svg.github.io/web/
 
-Toda la tipografía y espacios escalan con custom properties.
-
----
-
-## Accesibilidad
-
-- HTML semántico (`<header>`, `<main>`, `<nav>`, `<section>`, `<article>`, `<aside>`, `<footer>`)
-- ARIA labels en navegación, drawer, formulario, redes sociales
-- `prefers-reduced-motion` desactiva animaciones
-- Contraste AA verificado en navy/blanco, naranja/blanco
-- Focus visible con `:focus-visible`
-- `aria-invalid` + `role="alert"` en validación de formulario
-- Skip link implícito por `<a href="#top">` del logo
+Si alguna vez el sitio cae con 404 en todas las páginas: revisar
+`https://github.com/llpereirae-svg/web/settings/pages` y verificar que
+Pages siga apuntando a `main` / `/ (root)`.
 
 ---
 
-## Performance
+## URLs externas referenciadas
 
-- **0 librerías externas** — JS, CSS y fuentes 100% locales
-- **Preload** de fuentes críticas above-the-fold (DM Sans Bold, Inter Regular)
-- **`font-display: swap`** — FOUT sobre FOIT
-- **SVG inline** para iconos pequeños (sin sprites HTTP)
-- **`loading=lazy`** disponible si agregas más imágenes
-- **CSS sin selectors caros** — solo clases, sin `*` ni descendientes profundos
-
----
-
-## Integración con el flujo de registro existente
-
-El formulario del hero (campo RUC) **redirige al portal** existente al validar:
-
-```
-https://tbc.tributasoft.ec/Erp-web/?ruc={RUC}
-```
-
-Si quieres que continúe en el prototipo local (`/Session/tributasoft/`), cambia la
-URL en `assets/js/main.js` (busca `target = new URL(...)`).
+| Botón / sección | Destino |
+|---|---|
+| "Empezar aquí" | https://llpereirae-svg.github.io/Ts/ (signup) |
+| "Iniciar sesión" | https://tbc.tributasoft.ec/Erp-web/... (ERP en producción) |
+| FAB WhatsApp | wa.me/593996345284 (soporte general) |
 
 ---
 
-## Próximos pasos sugeridos
+## Stack y decisiones
 
-- [ ] Reemplazar los 5 placeholders de contacto (búsqueda `{PENDIENTE-`)
-- [ ] Si tienes logos de clientes (Heineken, Colgate, etc.), agregar sección "Confían en nosotros" antes del testimonio
-- [ ] Generar `og-image.png` real (1200×630) y reemplazar `og:image` del `<head>`
-- [ ] Configurar `robots.txt` y `sitemap.xml` cuando se publique
-- [ ] (Opcional) Optimizar `logo.png` con `squoosh` — de 281 KB a ~30 KB en WebP
-
----
-
-## Stack y decisiones de diseño
-
-- **No frameworks:** sin React, sin Vue, sin Tailwind. CSS custom properties + clases utilitarias controladas
-- **No bundlers:** archivos servibles tal cual, ideal para hosting estático (Vercel, Netlify, Cloudflare Pages, GitHub Pages, S3)
-- **No Google Fonts CDN:** fuentes auto-host (privacidad GDPR, sin DNS extra, mejor performance)
-- **No tracking:** sin Google Analytics, sin Meta Pixel. Si se agrega, declarar en política de privacidad
-
----
-
-Generado el 2026-05-20.
+- **0 dependencias externas en runtime** — JS, CSS y fuentes 100 % auto-host.
+- **No frameworks** — sin React, Vue, Tailwind. CSS custom properties + clases utilitarias controladas.
+- **No bundlers** — los archivos se sirven tal cual.
+- **No Google Fonts CDN** — fuentes auto-host (privacidad GDPR, sin DNS extra, mejor performance).
+- **No tracking** — sin Google Analytics, sin Meta Pixel. Si se agrega, declarar en la política de privacidad.
